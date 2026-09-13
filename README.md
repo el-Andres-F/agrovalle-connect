@@ -4,10 +4,10 @@
 AgroValle Connect es una plataforma agrícola diseñada para el ecosistema del Valle del Cauca. Su objetivo es integrar tecnologías de información para conectar a productores locales con mercados regionales, optimizando la cadena de suministro mediante una arquitectura robusta y escalable.
 
 ## Integrantes del Equipo
-* Andres Fuelagan ()
-* [Nombre del integrante 2]
-* [Nombre del integrante 3]
-* [Nombre del integrante 3]
+* Andres Fuelagan 
+* Juan Jose Guerrero
+* Juan David Chicangana
+* Miguel Angel Hurtado
 
 
 ## Estrategia de Ramas (GitFlow)
