@@ -11,6 +11,7 @@ Plataforma digital para conectar a los productores del Valle del Cauca con merca
 
 AgroValle Connect integra productores locales, compradores y la cadena de suministro en un solo espacio digital. La plataforma busca mejorar la visibilidad de la oferta agricola, facilitar acuerdos comerciales y optimizar el movimiento de productos desde el campo hasta los mercados regionales.
 
+
 ## Como funciona
 
 ```mermaid
@@ -38,7 +39,7 @@ flowchart LR
 
 ## Equipo
 
-| Integrante |
+| Integrantes |
 | --- |
 | Juan Chicangana |
 | Andres Fuelagan |
