@@ -39,7 +39,7 @@ flowchart LR
 
 ## Equipo
 
-| Integrante |
+| Integrantes |
 | --- |
 | Juan Chicangana |
 | Andres Fuelagan |
@@ -96,15 +96,3 @@ checkstyle.xml      Reglas de calidad de código
 - [Product Backlog](BACKLOG.md)
 - [Definition of Done](docs/dod.md)
 - [Repositorio público en GitHub](https://github.com/el-Andres-F/agrovalle-connect)
-
-# Definition of Done (DoD)
-- [ ] El código compila sin errores.
-- [ ] Se revisó el código por pares mediante un Pull Request.
-- [ ] El código cumple con las reglas de checkstyle.xml.
-- [ ] La historia de usuario cumple con los criterios de aceptación (Given-When-Then). 
-
-**Firmado por:** El equipo de desarrollo.
-
-</Step>
-</Sequence>
-
