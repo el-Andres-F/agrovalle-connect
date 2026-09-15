@@ -1,74 +1,97 @@
 # AgroValle Connect
 
-## Visión del Producto
-AgroValle Connect es una plataforma agrícola diseñada para el ecosistema del Valle del Cauca. Su objetivo es integrar tecnologías de información para conectar a productores locales con mercados regionales, optimizando la cadena de suministro mediante una arquitectura robusta y escalable.
+Plataforma digital para conectar a los productores del Valle del Cauca con mercados regionales y facilitar la comercializacion de productos agricolas.
 
-## Integrantes del Equipo
-* Andres Fuelagan 
-* Juan Jose Guerrero
-* Juan David Chicangana
-* Miguel Angel Hurtado
+![Java](https://img.shields.io/badge/Java-17-ED8B00?logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.1.1-6DB33F?logo=springboot&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-build-C71A36?logo=apachemaven&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-repository-181717?logo=github&logoColor=white)
 
+## Vision del producto
 
-## Estrategia de Ramas (GitFlow)
-Utilizaremos GitFlow para mantener un desarrollo organizado, separando las nuevas características de la rama principal de producción.
+AgroValle Connect integra productores locales, compradores y la cadena de suministro en un solo espacio digital. La plataforma busca mejorar la visibilidad de la oferta agricola, facilitar acuerdos comerciales y optimizar el movimiento de productos desde el campo hasta los mercados regionales.
 
-3.Llena el README.md con el diagrama Mermaid:Abre el archivo README.md y pega esta plantilla. Ya incluye la visión del producto, el espacio para tu equipo y el diagrama de estrategia de ramas en código Mermaid:Markdown# AgroValle Connect
+## Como funciona
 
-## Visión del Producto
-AgroValle Connect es una plataforma agrícola diseñada para el ecosistema del Valle del Cauca. Su objetivo es integrar tecnologías de información para conectar a productores locales con mercados regionales, optimizando la cadena de suministro mediante una arquitectura robusta y escalable.
+```mermaid
+flowchart LR
+    productor[Productor agricola] -->|Publica productos| plataforma((AgroValle Connect))
+    comprador[Comprador regional] -->|Busca y solicita| plataforma
+    plataforma -->|Conecta oferta y demanda| acuerdo[Acuerdo comercial]
+    acuerdo --> logistica[Gestion de la cadena de suministro]
+    logistica --> mercado[Mercado regional]
 
-## Integrantes del Equipo
-* Andres Fuelagan (Representante)
-* [Nombre del integrante 2]
-* [Nombre del integrante 3]
+    classDef actor fill:#e8f3ed,stroke:#1f6f4a,color:#173b2b
+    classDef core fill:#f4c95d,stroke:#a66b00,color:#3b2800
+    classDef process fill:#e7eef7,stroke:#35618f,color:#1b344f
+    class productor,comprador actor
+    class plataforma core
+    class acuerdo,logistica,mercado process
+```
 
-## Estrategia de Ramas (GitFlow)
-Utilizaremos GitFlow para mantener un desarrollo organizado, separando las nuevas características de la rama principal de producción.
+## Alcance inicial
 
-mermaid
+- Registro y gestión de productores y compradores.
+- Publicación y consulta de productos agrícolas.
+- Solicitudes de compra y acuerdos comerciales.
+- Seguimiento de la cadena de suministro.
+
+## Equipo
+
+| Integrante |
+| --- |
+| Juan Chicangana |
+| Andres Fuelagan |
+| Juan Guerrero |
+| Miguel Hurtado |
+
+## Tecnologias
+
+- Java 17
+- Spring Boot
+- Maven
+- PostgreSQL
+- Git y GitHub
+
+## Estrategia de ramas: GitFlow
+
+Se utiliza GitFlow para separar el desarrollo de nuevas funcionalidades de las versiones estables:
+
+- `main`: versiones estables y entregables.
+- `develop`: integración de funcionalidades.
+- `feature/*`: desarrollo de historias de usuario.
+- `fix/*`: correcciones puntuales.
+
+Los cambios se integran mediante Pull Requests revisados por otro integrante del equipo.
+
+```mermaid
 gitGraph
-3.Llena el README.md con el diagrama Mermaid:Abre el archivo README.md y pega esta plantilla. Ya incluye la visión del producto, el espacio para tu equipo y el diagrama de estrategia de ramas en código Mermaid:Markdown# AgroValle Connect
+    commit id: "Inicializacion del proyecto"
+    branch develop
+    checkout develop
+    commit id: "Configuracion base"
+    branch feature/HU-01
+    checkout feature/HU-01
+    commit id: "feat: implementar HU-01"
+    checkout develop
+    merge feature/HU-01
+    checkout main
+    merge develop tag: "v1.0.0"
+```
 
-## Visión del Producto
-AgroValle Connect es una plataforma agrícola diseñada para el ecosistema del Valle del Cauca. Su objetivo es integrar tecnologías de información para conectar a productores locales con mercados regionales, optimizando la cadena de suministro mediante una arquitectura robusta y escalable.
+## Estructura del proyecto
 
-## Integrantes del Equipo
-* Andres Fuelagan (Representante)
-* [Nombre del integrante 2]
-* [Nombre del integrante 3]
+```text
+src/main/java       Código fuente de la aplicación
+src/test/java       Pruebas automatizadas
+docs/               Documentación y Definition of Done
+BACKLOG.md          Historias de usuario y prioridades
+checkstyle.xml      Reglas de calidad de código
+.husky/pre-commit   Validaciones antes de crear commits
+```
 
-## Estrategia de Ramas (GitFlow)
-Utilizaremos GitFlow para mantener un desarrollo organizado, separando las nuevas características de la rama principal de producción.
+## Documentacion
 
-mermaid 
-gitGraph
-commit id: "Inicializar"
-branch develop
-checkout develop 
-commit id: "Configuración base" 
-branch feature/HU-01 
-checkout feature/HU-01
-commit id: "feat: registro agricultor"
-checkout develop
-merge feature/HU-01
-checkout main
-merge develop tag: "v1.0" 
-
-*(Nota: los tres acentos graves ` al final cierran el bloque de código).*
-</Step>
-<Step title="Llena el BACKLOG.md y el dod.md">
-*   **En el archivo `BACKLOG.md`:** Pega las 15 historias de usuario que generamos anteriormente (desde la HU-01 hasta la HU-15), las cuales ya están en formato BDD y categorizadas con MoSCoW. Solo tendrías que agregarle los "Story Points" (ej. 1, 2, 3, 5, 8) al lado del título de cada historia.
-*   **En el archivo `docs/dod.md`:** Pega un checklist de calidad como este: 
-
-markdown
-# Definition of Done (DoD)
-- [ ] El código compila sin errores.
-- [ ] Se revisó el código por pares mediante un Pull Request.
-- [ ] El código cumple con las reglas de checkstyle.xml.
-- [ ] La historia de usuario cumple con los criterios de aceptación (Given-When-Then). 
-
-**Firmado por:** El equipo de desarrollo.
-
-</Step>
-</Sequence>
+- [Product Backlog](BACKLOG.md)
+- [Definition of Done](docs/dod.md)
+- [Repositorio público en GitHub](https://github.com/el-Andres-F/agrovalle-connect)
