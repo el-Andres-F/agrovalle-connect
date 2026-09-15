@@ -35,4 +35,4 @@ Una Historia de Usuario solamente podrá considerarse **Done** cuando todos los 
 | Juan Guerrero | __________________________ |
 | Miguel Hurtado | __________________________ |
 
-**Fecha:** 16 de septiembre de 2026
+**Fecha:** 15 de septiembre de 2026
