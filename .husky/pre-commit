@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo "Ejecutando pruebas y Checkstyle antes del commit..."
+
+./mvnw test && ./mvnw checkstyle:check
+
+if [ $? -ne 0 ]; then
+	echo "ERROR: Las pruebas o Checkstyle fallaron. Commit cancelado."
+	exit 1
+fi
+
+echo "Validaciones exitosas. Commit permitido."
+exit 0
