@@ -62,6 +62,20 @@ flowchart LR
 - PostgreSQL
 - Git y GitHub
 
+## Seleccion de Java
+
+El proyecto incluye un selector para cambiar entre las versiones de Java instaladas:
+
+```powershell
+. .\scripts\select-java.ps1
+```
+
+El selector permite elegir Java 8, 17, 21 o 26 cuando estan disponibles. La version elegida queda activa en la ventana actual de PowerShell. Para validar el proyecto con Java 17, selecciona esa version y ejecuta:
+
+```powershell
+.\mvnw.cmd test
+```
+
 ## Estrategia de ramas: GitFlow
 
 Se utiliza GitFlow para separar el desarrollo de nuevas funcionalidades de las versiones estables:
@@ -105,6 +119,7 @@ checkstyle.xml                   Reglas de calidad de código (Google Java Style
 
 ## Documentacion
 
+- [Guia de ejecucion manual](docs/guia-ejecucion.md)
 - [Product Backlog](BACKLOG.md)
 - [Definition of Done](docs/dod.md)
 - [Repositorio público en GitHub](https://github.com/el-Andres-F/agrovalle-connect)

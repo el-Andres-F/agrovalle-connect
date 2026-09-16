@@ -6,7 +6,7 @@
 <!--
     Configuracion de Checkstyle para AgroValle Connect.
     Basada en las reglas de Google Java Style, tal como esta en la
-    Guia de Trabajo Practico.
+    Guia de Trabajo Practico. 
 -->
 <module name="Checker">
 	<property name="charset" value="UTF-8"/>
