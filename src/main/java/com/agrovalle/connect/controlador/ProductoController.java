@@ -1,12 +1,10 @@
 package com.agrovalle.connect.controlador;
 
-import com.agrovalle.connect.modelo.Producto;
-import com.agrovalle.connect.modelo.Productor;
-import com.agrovalle.connect.repositorio.ProductoRepository;
-import com.agrovalle.connect.repositorio.ProductorRepository;
-import jakarta.validation.Valid;
+import java.text.Normalizer;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Locale;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.agrovalle.connect.modelo.Producto;
+import com.agrovalle.connect.modelo.Productor;
+import com.agrovalle.connect.repositorio.ProductoRepository;
+import com.agrovalle.connect.repositorio.ProductorRepository;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -35,7 +40,7 @@ public class ProductoController {
 
         Producto producto = new Producto(
             solicitud.nombre(),
-            solicitud.categoria(),
+            normalizarCategoria(solicitud.categoria()),
             solicitud.cantidad(),
             solicitud.fechaCosecha(),
             solicitud.precio(),
@@ -48,9 +53,15 @@ public class ProductoController {
     @GetMapping("/productos")
     public List<Producto> obtenerProductos(@RequestParam(required = false) String categoria) {
         if (categoria != null && !categoria.isBlank()) {
-            return productoRepository.findByCategoria(categoria.toUpperCase());
+            return productoRepository.findByCategoria(normalizarCategoria(categoria));
         }
         return productoRepository.findAll();
+    }
+
+    private String normalizarCategoria(String categoria) {
+        String sinAcentos = Normalizer.normalize(categoria.trim(), Normalizer.Form.NFD)
+            .replaceAll("\\p{M}", "");
+        return sinAcentos.toUpperCase(Locale.ROOT);
     }
 
     public record SolicitudProducto(
