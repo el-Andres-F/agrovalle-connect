@@ -9,7 +9,7 @@ Esta guia explica como preparar PostgreSQL, seleccionar Java 17, ejecutar el ser
 - Base de datos creada en PostgreSQL con el nombre `agrovalle`.
 - PowerShell abierto en la carpeta raiz del proyecto.
 
-La conexion local se configura en `src/main/resources/application.properties`. No publiques contrasenas reales en GitHub.
+La conexion local se configura en `src/main/resources/application.properties`. usa tu contraseña de postgress 
 
 ## 1. Seleccionar Java 17
 
