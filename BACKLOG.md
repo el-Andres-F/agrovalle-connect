@@ -220,3 +220,11 @@ Los Story Points representan complejidad, esfuerzo, dependencias e incertidumbre
 | Should | HU-03, HU-05, HU-08, HU-10, HU-11, HU-13 | 29 |
 | Could | HU-12, HU-14, HU-15 | 11 |
 | **Total** | **15 historias** | **79** |
+
+| Tarea                          | Story Points |
+| -------------------------------- | -----------: |
+| HU-01 – Registro de Agricultores |            5 |
+| HU-02 – Publicación de Productos |            5 |
+| HU-04 – Filtro de Categorías     |            3 |
+| HU-06 – Registro de Compradores  |            5 |
+
