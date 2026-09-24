@@ -221,6 +221,8 @@ Los Story Points representan complejidad, esfuerzo, dependencias e incertidumbre
 | Could | HU-12, HU-14, HU-15 | 11 |
 | **Total** | **15 historias** | **79** |
 
+## Simulación de Sprint Planning: El Motor de Ejecución
+
 | Tarea                          | Story Points |
 | -------------------------------- | -----------: |
 | HU-01 – Registro de Agricultores |            5 |
