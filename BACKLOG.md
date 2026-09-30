@@ -219,14 +219,17 @@ Los Story Points representan complejidad, esfuerzo, dependencias e incertidumbre
 | Must | HU-01, HU-02, HU-04, HU-06, HU-07, HU-09 | 39 |
 | Should | HU-03, HU-05, HU-08, HU-10, HU-11, HU-13 | 29 |
 | Could | HU-12, HU-14, HU-15 | 11 |
+| Won't | Ninguna | 0 |
 | **Total** | **15 historias** | **79** |
 
-## Simulación de Sprint Planning: El Motor de Ejecución
+## Selección para el Sprint 1
 
-| Tarea                          | Story Points |
-| -------------------------------- | -----------: |
-| HU-01 – Registro de Agricultores |            5 |
-| HU-02 – Publicación de Productos |            5 |
-| HU-04 – Filtro de Categorías     |            3 |
-| HU-06 – Registro de Compradores  |            5 |
+La capacidad del equipo para el Sprint 1 es de **10 Story Points**. Se seleccionan las dos historias Must Have del grupo *Autenticación y Registro*, que suman exactamente la capacidad:
 
+| Historia | Prioridad | Story Points |
+| --- | --- | ---: |
+| HU-01 — Registro de Agricultores | Must | 5 |
+| HU-06 — Registro de Compradores | Must | 5 |
+| **Total** | | **10** |
+
+HU-02 y HU-04 (Publicación y Filtro de Categorías) pasan al Sprint 2. La descomposición técnica está en [`docs/sprint-1-planning.md`](docs/sprint-1-planning.md).

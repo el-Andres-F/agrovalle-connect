@@ -76,6 +76,16 @@ El selector permite elegir Java 8, 17, 21 o 26 cuando estan disponibles. La vers
 .\mvnw.cmd test
 ```
 
+## Activar los hooks de Husky
+
+Los hooks de `.husky/pre-commit` solo se activan después de instalar las dependencias de Node una vez por clon (requiere Node.js 18+):
+
+```
+npm install
+```
+
+El script `prepare` de `package.json` ejecuta `husky` y configura `core.hooksPath`. Desde ese momento cada `git commit` corre `./mvnw test` y `./mvnw checkstyle:check`.
+
 ## Estrategia de ramas: GitFlow
 
 Se utiliza GitFlow para separar el desarrollo de nuevas funcionalidades de las versiones estables:

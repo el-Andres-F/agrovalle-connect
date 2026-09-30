@@ -1,0 +1,11 @@
+{
+  "name": "agrovalle-connect",
+  "private": true,
+  "description": "Herramientas de desarrollo (Husky) para AgroValle Connect",
+  "scripts": {
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}
