@@ -37,7 +37,7 @@
 | Integrante | ¿Qué hice? | ¿Qué haré? | Impedimentos |
 | --- | --- | --- | --- |
 | Andres Fuelagan | Dejó listos el Backlog de 15 HU, el DoD, Checkstyle, las APIs de productos y productores, y la guía de ejecución. | Elaborar el tablero Kanban junto con Juan José Guerrero y revisar y fusionar el PR #25 en `develop`. | Ninguno |
-| Juan Chicangana | Asignó los valores (Story Points) a las historias de usuario. | [CONFIRMAR] | Ninguno |
+| Juan Chicangana | Asignó los valores (Story Points) a las historias de usuario. | Ninguno | Ninguno |
 | Juan José Guerrero | Supervisó y probó lo realizado por Andres y Juan Chicangana. | Elaborar el tablero Kanban junto con Andres, organizar los requisitos del trabajo e informarlos al equipo. | Ninguno |
 | Miguel Hurtado | Supervisó y probó lo realizado por Andres y Juan Chicangana. | Corregir el tablero Kanban, preparar la planificación del Sprint 1 y los documentos de ejecución, activar Husky y abrir el PR #25. | Ninguno |
 
@@ -54,7 +54,7 @@
 | Integrante | ¿Qué hice? | ¿Qué haré? | Impedimentos |
 | --- | --- | --- | --- |
 | Juan José Guerrero | Elaboró el tablero Kanban junto con Andres; organizó los requisitos del trabajo y los informó al equipo. | Investigar cómo elaborar la documentación solicitada en el formato permitido. | Ninguno |
-| Andres Fuelagan | Elaboró el tablero Kanban junto con Juan José Guerrero; revisó y fusionó el PR #25 en `develop`. | [CONFIRMAR] | Ninguno |
+| Andres Fuelagan | Elaboró el tablero Kanban junto con Juan José Guerrero; revisó y fusionó el PR #25 en `develop`. | revisar y hacer test de lo entregado | Ninguno |
 | Miguel Hurtado | Corrigió el tablero Kanban; preparó la planificación del Sprint 1 y los documentos de ejecución, activó Husky y abrió el PR #25. | Ajustar el límite de Code Review a 2, depurar tarjetas duplicadas del tablero y definir un Sprint 1 de 10 Story Points. | El hook de pre-commit falló por la conexión a PostgreSQL (base y contraseña sin configurar); ya se resolvió. |
 | Juan Chicangana | No asistió. | — | — |
 

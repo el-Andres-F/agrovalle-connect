@@ -9,7 +9,7 @@ Esta guia explica como comprobar los requisitos, ejecutar el servidor y probar H
 - Base de datos creada en PostgreSQL con el nombre `agrovalle`.
 - PowerShell abierto en la carpeta raiz del proyecto (la carpeta que contiene `mvnw.cmd`).
 
-La conexion local se configura en `src/main/resources/application.properties`. Asegurate de que el usuario y la contraseña configurados alli coincidan con tu PostgreSQL. No publiques contraseñas reales en el repositorio.
+La conexion local se configura en `src/main/resources/application.properties`. Asegurate de que el usuario y la contraseña configurados alli coincidan con tu PostgreSQL. 
 
 ## 1. Comprobar Java y la base de datos
 
