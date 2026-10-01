@@ -1,61 +1,55 @@
 # Guia de ejecucion — AgroValle Connect
 
-Esta guia explica como preparar PostgreSQL, seleccionar Java 17, ejecutar el servidor y probar HU-01 y HU-02.
+Esta guia explica como comprobar los requisitos, ejecutar el servidor y probar HU-01 y HU-02.
 
 ## Requisitos
 
-- Java 17 instalado.
+- JDK 17 o superior. Esta aplicacion se comprobo ejecutandola con Java 26; el proyecto compila para Java 17.
 - PostgreSQL instalado y ejecutandose en el puerto `5432`.
 - Base de datos creada en PostgreSQL con el nombre `agrovalle`.
-- PowerShell abierto en la carpeta raiz del proyecto.
+- PowerShell abierto en la carpeta raiz del proyecto (la carpeta que contiene `mvnw.cmd`).
 
-La conexion local se configura en `src/main/resources/application.properties`. usa tu contraseña de postgress 
+La conexion local se configura en `src/main/resources/application.properties`. Asegurate de que el usuario y la contraseña configurados alli coincidan con tu PostgreSQL. No publiques contraseñas reales en el repositorio.
 
-## 1. Seleccionar Java 17
+## 1. Comprobar Java y la base de datos
 
-Ejecuta en PowerShell:
-
-```powershell
-. .\scripts\select-java.ps1 -Version 17
-java -version
-```
-
-Maven tambien debe mostrar Java 17:
+En PowerShell, desde la raiz del proyecto, ejecuta:
 
 ```powershell
 .\mvnw.cmd -version
 ```
 
-## 2. Ejecutar las pruebas
+En la salida, confirma que Maven usa Java 17 o superior. No es necesario ejecutar `npm` para arrancar esta aplicacion. Si quieres seleccionar una instalacion de Java detectada por el script del proyecto, puedes hacerlo en la misma ventana de PowerShell:
 
-Para compilar y ejecutar las pruebas:
+```powershell
+. .\scripts\select-java.ps1 -Version 17
+```
+
+Usa esa seleccion solo si Java 17 esta instalado; despues vuelve a ejecutar el comando de comprobacion indicado arriba.
+
+Confirma tambien que PostgreSQL este iniciado y que exista la base `agrovalle`.
+
+## 2. Ejecutar las pruebas (opcional)
 
 ```powershell
 .\mvnw.cmd test
 ```
 
-Para crear el archivo ejecutable sin ejecutar las pruebas:
-
-```powershell
-.\mvnw.cmd package '-Dmaven.test.skip=true'
-```
-
 ## 3. Iniciar el servidor
 
-En una terminal PowerShell, ejecuta:
+El comando utilizado para ejecutar y comprobar esta aplicacion fue `spring-boot:run`. En PowerShell, desde la raiz del proyecto, ejecuta:
 
 ```powershell
-. .\scripts\select-java.ps1 -Version 17
-java -jar .\target\connect-0.0.1-SNAPSHOT.jar
+.\mvnw.cmd spring-boot:run
 ```
 
-Cuando aparezca `Tomcat started on port 8080`, el servidor estara disponible en:
+La primera ejecucion puede tardar mientras Maven descarga dependencias. Cuando aparezca `Tomcat started on port 8080`, el servidor estara disponible en:
 
 ```text
 http://localhost:8080/
 ```
 
-La ruta raiz muestra el estado de la API. Para detener el servidor presiona `Ctrl+C` en esa terminal.
+La ruta raiz abre el panel web de AgroValle Connect. Desde alli puedes registrar productores y publicar productos; las listas se actualizan automaticamente. Deja esa terminal abierta mientras usas el panel. Para detener el servidor presiona `Ctrl+C` en esa terminal.
 
 ## 4. Probar HU-01 — Registro de agricultores
 
@@ -120,7 +114,8 @@ La respuesta debe mostrar el producto publicado y su productor relacionado.
 
 | Metodo | Ruta | Funcion |
 | --- | --- | --- |
-| GET | `/` | Estado de la API |
+| GET | `/` | Panel web para productores y productos |
+| GET | `/api/status` | Estado de la API |
 | POST | `/api/v1/productores` | Registrar productor |
 | GET | `/api/v1/productores` | Consultar productores |
 | POST | `/api/v1/productos` | Publicar producto |
@@ -130,9 +125,8 @@ La respuesta debe mostrar el producto publicado y su productor relacionado.
 ## Flujo rapido
 
 ```powershell
-. .\scripts\select-java.ps1 -Version 17
-.\mvnw.cmd package '-Dmaven.test.skip=true'
-java -jar .\target\connect-0.0.1-SNAPSHOT.jar
+.\mvnw.cmd -version
+.\mvnw.cmd spring-boot:run
 ```
 
-El servidor debe permanecer ejecutandose en la primera terminal mientras realizas las peticiones desde la segunda.
+El servidor debe permanecer ejecutandose en esa terminal mientras usas el panel en el navegador o realizas peticiones desde otra terminal.

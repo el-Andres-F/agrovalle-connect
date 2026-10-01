@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class InicioController {
 
-    @GetMapping("/")
+    @GetMapping("/api/status")
     public Map<String, Object> inicio() {
         return Map.of(
             "application", "AgroValle Connect",

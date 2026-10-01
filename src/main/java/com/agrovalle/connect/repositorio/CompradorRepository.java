@@ -1,11 +1,11 @@
 package com.agrovalle.connect.repositorio;
 
-import com.agrovalle.connect.modelo.Productor;
+import com.agrovalle.connect.modelo.Comprador;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductorRepository extends JpaRepository<Productor, Long> {
+public interface CompradorRepository extends JpaRepository<Comprador, Long> {
 
-    boolean existsByCedula(String cedula);
+    boolean existsByCorreo(String correo);
 }
