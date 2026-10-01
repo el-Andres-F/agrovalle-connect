@@ -1,6 +1,5 @@
 # Bitácora de Daily Scrums — AgroValle Connect
 
-> **Nota para el equipo (borrar antes de entregar):** las fechas, horas, asistentes, roles, impedimentos y acuerdos son los que indicó el equipo. La evidencia de cada reunión proviene del repositorio (commits, Pull Requests y tablero). Llenen los pocos campos `[CONFIRMAR]` que quedan y verifiquen entre los cuatro que todo coincida con lo que realmente ocurrió.
 
 **Equipo:** Juan Chicangana, Andres Fuelagan, Juan José Guerrero, Miguel Hurtado
 **Formato:** cada integrante responde (1) qué hizo desde la última reunión, (2) qué hará a continuación, (3) qué impedimentos tiene.
