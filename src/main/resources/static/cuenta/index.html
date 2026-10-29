@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#FAF5EC">
+  <title>AgroValle Connect | Mi cuenta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/tienda.css"><link rel="stylesheet" href="/cuenta.css"><link rel="stylesheet" href="/cuenta/index.css">
+  <script type="module" src="/cuenta/header.js"></script>
+  <script type="module" src="/cuenta/index.js"></script>
+</head>
+<body class="profile-page">
+  <div id="site-header"></div>
+  <main class="profile-main">
+    <a class="profile-back" href="/clientes/">← Volver a la tienda</a>
+    <section class="profile-card">
+      <div class="profile-heading"><span class="section-kicker">TU ESPACIO PERSONAL</span><h1>Mi cuenta</h1><p>Actualiza tus datos y preferencias de acceso.</p></div>
+      <div class="profile-message" id="profile-message" role="status" aria-live="polite"></div>
+      <form id="profile-form" class="profile-form">
+        <div class="profile-fields">
+          <label>Nombre<input name="nombre" autocomplete="given-name" required maxlength="100"></label>
+          <label>Apellido<input name="apellido" autocomplete="family-name" required maxlength="100"></label>
+          <label>Correo electrónico<input name="correo" type="email" autocomplete="email" required maxlength="160"></label>
+          <label id="phone-field">Celular<input name="telefono" type="tel" pattern="3[0-9]{9}" maxlength="10" autocomplete="tel"><small>Celular colombiano de 10 dígitos.</small></label>
+        </div>
+        <div class="password-section"><div><h2>Cambiar contraseña</h2><p>Déjala en blanco si no quieres cambiarla.</p></div>
+          <label>Contraseña actual<input name="contrasenaActual" type="password" autocomplete="current-password"></label>
+          <label>Nueva contraseña<input name="contrasenaNueva" type="password" minlength="8" autocomplete="new-password"><small>Mínimo 8 caracteres, con letras y números.</small></label>
+        </div>
+        <button class="save-profile" type="submit">Guardar cambios <span>→</span></button>
+      </form>
+    </section>
+    <section class="profile-card order-history-card" aria-labelledby="orders-title">
+      <div class="profile-heading"><span class="section-kicker">TUS COMPRAS</span><h2 id="orders-title">Historial de pedidos</h2><p>Solo aparecen los pedidos asociados a esta cuenta.</p></div>
+      <p id="orders-message" class="profile-message" role="status" aria-live="polite">Cargando pedidos…</p>
+      <div id="orders-list" class="orders-list"></div>
+    </section>
+  </main>
+</body>
+</html>

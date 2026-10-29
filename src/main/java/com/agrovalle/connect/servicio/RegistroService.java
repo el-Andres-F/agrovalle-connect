@@ -19,12 +19,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class RegistroService {
 
     private static final Pattern CEDULA = Pattern.compile("^\\d{6,10}$");
+
     private static final Pattern CORREO = Pattern.compile("^[\\w.+-]+@[\\w-]+(\\.[\\w-]+)+$");
+
     private static final Pattern TELEFONO = Pattern.compile("^3\\d{9}$");
+
     private static final Pattern CONTRASENA = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d).{8,}$");
 
     private final ProductorRepository productorRepository;
+
     private final CompradorRepository compradorRepository;
+
     private final BCryptPasswordEncoder codificador = new BCryptPasswordEncoder();
 
     public RegistroService(ProductorRepository productorRepository,
@@ -38,9 +43,12 @@ public class RegistroService {
         if (datos == null || datos.tipo() == null) {
             throw new RegistroInvalidoException("El campo 'tipo' es obligatorio (PRODUCTOR o COMPRADOR).");
         }
-        return datos.tipo() == TipoUsuario.PRODUCTOR
-                ? registrarProductor(datos)
-                : registrarComprador(datos);
+        return switch (datos.tipo()) {
+            case PRODUCTOR -> registrarProductor(datos);
+            case COMPRADOR -> registrarComprador(datos);
+            case ADMIN -> throw new RegistroInvalidoException(
+                "Las cuentas administrativas se configuran únicamente desde el servidor.");
+        };
     }
 
     private RegistroResponse registrarProductor(RegistroRequest d) {
@@ -79,6 +87,9 @@ public class RegistroService {
         }
         Comprador comprador = new Comprador();
         comprador.setNombre(d.nombre().trim());
+        if (d.apellido() != null && !d.apellido().isBlank()) {
+        comprador.setApellido(d.apellido().trim());
+        }
         comprador.setCorreo(correo);
         comprador.setTelefono(d.telefono());
         comprador.setContrasenaHash(codificador.encode(d.contrasena()));

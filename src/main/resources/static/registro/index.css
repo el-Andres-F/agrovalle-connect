@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --color-cafe: #3B3328;
+  --color-terracota: #A65D36;
+  --color-mostaza: #D8A84E;
+  --color-fondo: #FAF5EC;
+  --color-blanco: #FFFFFF;
+  --color-borde: #E9E1D3;
+  --shadow-sm: 0 4px 12px rgba(59, 51, 40, 0.05);
+  --shadow-md: 0 12px 40px rgba(59, 51, 40, 0.08);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+body { background-color: var(--color-fondo); color: var(--color-cafe); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+
+/* Header superpuesto */
+.access-header { display: flex; justify-content: space-between; align-items: center; padding: 2rem 4rem; background: transparent; position: absolute; top: 0; width: 100%; z-index: 10; }
+.access-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--color-blanco); }
+.brand-mark { background: var(--color-mostaza); color: var(--color-cafe); width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; }
+.access-brand span:not(.brand-mark) { display: flex; flex-direction: column; }
+.access-brand strong { font-size: 1.15rem; line-height: 1; letter-spacing: -0.5px; }
+.access-brand small { font-size: 0.65rem; letter-spacing: 1px; color: var(--color-borde); font-weight: 700; }
+
+.back-link { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--color-cafe); font-weight: 600; font-size: 0.95rem; transition: var(--transition); background: var(--color-blanco); padding: 10px 20px; border-radius: 30px; box-shadow: var(--shadow-sm); }
+.back-link:hover { color: var(--color-terracota); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.back-link i { width: 18px; height: 18px; }
+
+/* Layout de dos columnas */
+.access-layout { display: flex; flex: 1; min-height: 100vh; }
+
+/* Panel Izquierdo (Hero/Arte) */
+.access-story { flex: 1; background-color: var(--color-cafe); color: var(--color-blanco); padding: 8rem 4rem 4rem; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.story-content { position: relative; z-index: 2; max-width: 480px; }
+.story-kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; color: var(--color-mostaza); margin-bottom: 1.5rem; text-transform: uppercase; background: rgba(216, 168, 78, 0.1); padding: 6px 12px; border-radius: 20px; border: 1px solid rgba(216, 168, 78, 0.2); }
+.story-kicker i { width: 16px; height: 16px; }
+.access-story h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -2px; }
+.access-story h1 span { color: var(--color-mostaza); }
+.access-story p { font-size: 1.15rem; color: #E9E1D3; line-height: 1.6; opacity: 0.9; font-weight: 400; margin-bottom: 2rem; }
+
+/* Arte abstracto moderno (Reemplazo del Emoji) */
+.story-art { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; min-height: 300px; z-index: 1; margin: 1rem 0; }
+.abstract-circle { position: absolute; border-radius: 50%; }
+.circle-1 { width: 280px; height: 280px; background: var(--color-terracota); bottom: -30px; right: 0; opacity: 0.9; }
+.circle-2 { width: 200px; height: 200px; background: var(--color-mostaza); top: 10%; left: 15%; opacity: 0.8; }
+.art-glass-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); width: 130px; height: 130px; border-radius: 30px; display: flex; align-items: center; justify-content: center; box-shadow: 0 30px 60px rgba(0,0,0,0.3); z-index: 3; animation: float 6s ease-in-out infinite; }
+.art-icon { width: 64px; height: 64px; color: var(--color-fondo); }
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+.story-features { display: flex; flex-direction: column; gap: 12px; z-index: 2; margin-top: auto; }
+.feature-item { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; font-weight: 500; color: #E9E1D3; }
+.feature-item i { width: 18px; height: 18px; color: var(--color-mostaza); }
+
+/* Panel Derecho (Formulario de Registro) */
+.access-panel { flex: 1; display: flex; align-items: center; justify-content: center; padding: 4rem; background: var(--color-fondo); position: relative; max-height: 100vh; overflow-y: auto; }
+.form-container { background: var(--color-blanco); padding: 3.5rem; border-radius: 24px; width: 100%; max-width: 550px; box-shadow: var(--shadow-md); border: 1px solid var(--color-borde); margin-top: 2rem; margin-bottom: 2rem; }
+
+.form-heading { margin-bottom: 2rem; }
+.section-kicker { font-size: 0.75rem; font-weight: 700; color: var(--color-terracota); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.8rem; display: block; }
+.form-heading h2 { font-size: 2.2rem; color: var(--color-cafe); letter-spacing: -1px; margin-bottom: 0.5rem; }
+.form-heading p { color: #666; font-size: 0.95rem; line-height: 1.5; }
+
+/* Mensajes de Alerta */
+.access-message { padding: 14px 18px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; margin-bottom: 1.5rem; display: none; }
+.access-message.show { display: block; background: #E3FCEF; color: #006644; border: 1px solid #B3EBC8; }
+.access-message.show.error { background: #FCE8E6; color: #D93025; border: 1px solid #FAD2CF; }
+
+/* Formulario Inputs */
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.input-group { margin-bottom: 1.5rem; }
+.input-group label { display: block; font-size: 0.9rem; font-weight: 600; color: var(--color-cafe); margin-bottom: 0.6rem; }
+.input-group label small { color: #999; font-weight: 400; font-size: 0.8rem; }
+.input-wrapper { position: relative; display: flex; align-items: center; }
+.input-wrapper i { position: absolute; left: 16px; color: #999; width: 18px; height: 18px; transition: var(--transition); }
+.input-wrapper input { width: 100%; padding: 14px 16px 14px 46px; border: 1px solid var(--color-borde); border-radius: 10px; font-size: 0.95rem; outline: none; transition: var(--transition); background: var(--color-fondo); color: var(--color-cafe); }
+.input-wrapper input::placeholder { color: #A0A0A0; }
+.input-wrapper input:focus { border-color: var(--color-terracota); background: var(--color-blanco); box-shadow: 0 0 0 4px rgba(166, 93, 54, 0.1); }
+.input-wrapper input:focus + i, .input-wrapper:focus-within i { color: var(--color-terracota); }
+.input-hint { display: block; font-size: 0.75rem; color: #888; margin-top: 6px; }
+
+/* Checkbox de términos */
+.terms-checkbox { margin-bottom: 1.5rem; }
+.terms-checkbox label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+.terms-checkbox input[type="checkbox"] { margin-top: 4px; accent-color: var(--color-terracota); width: 16px; height: 16px; cursor: pointer; }
+.terms-checkbox span { font-size: 0.85rem; color: #666; line-height: 1.4; }
+
+/* Botón Principal */
+.submit-button { width: 100%; background: var(--color-cafe); color: var(--color-blanco); border: none; padding: 16px; border-radius: 12px; font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; transition: var(--transition); }
+.submit-button:hover:not(:disabled) { background: var(--color-terracota); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(166, 93, 54, 0.2); }
+.submit-button:disabled { opacity: 0.7; cursor: not-allowed; }
+.submit-button .arrow { margin-left: auto; width: 18px; height: 18px; transition: transform 0.3s; }
+.submit-button:hover:not(:disabled) .arrow { transform: translateX(5px); }
+
+/* Footer del Formulario */
+.form-footer { margin-top: 2rem; text-align: center; border-top: 1px solid var(--color-borde); padding-top: 1.5rem; }
+.register-invite { font-size: 0.95rem; color: #666; }
+.register-invite a { color: var(--color-terracota); font-weight: 700; text-decoration: none; transition: var(--transition); border-bottom: 2px solid transparent; }
+.register-invite a:hover { border-bottom-color: var(--color-terracota); }
+
+@media(max-width: 1024px) {
+  .access-layout { flex-direction: column; }
+  .access-header { position: relative; background: var(--color-cafe); padding: 1.5rem 2rem; }
+  .access-story { min-height: auto; padding: 3rem 2rem; text-align: center; }
+  .story-content { max-width: 100%; margin: 0 auto; }
+  .story-kicker { margin: 0 auto 1.5rem; }
+  .access-story h1 { font-size: 2.5rem; }
+  .story-art { min-height: 200px; margin: 2rem 0; }
+  .story-features { align-items: center; }
+  .access-panel { padding: 1.5rem; overflow-y: visible; max-height: none; }
+  .form-container { padding: 2.5rem 2rem; margin-top: 0; }
+  .input-row { grid-template-columns: 1fr; gap: 0; }
+}

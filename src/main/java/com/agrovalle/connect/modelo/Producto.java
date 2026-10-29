@@ -22,10 +22,16 @@ public class Producto {
     private Long id;
 
     private String nombre;
+
     private String categoria;
+
     private Integer cantidad;
+
     private LocalDate fechaCosecha;
+
     private Double precio;
+
+    private String ubicacion;
 
     @ManyToOne
     @JoinColumn(name = "productor_id")
@@ -90,6 +96,14 @@ public class Producto {
 
     public void setPrecio(Double precio) {
         this.precio = precio;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
     public Productor getProductor() {

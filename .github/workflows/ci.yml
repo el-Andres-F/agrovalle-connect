@@ -1,0 +1,64 @@
+name: Integración Continua AgroValle Connect
+
+on:
+  push:
+    branches: [ main, 'feature/*' ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    # Los tests usan @SpringBootTest y la app apunta a PostgreSQL (application.properties),
+    # por eso el runner levanta una base de datos temporal para el pipeline.
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: agrovalle
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/agrovalle
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+
+    steps:
+      - name: Descargar Código
+        uses: actions/checkout@v4
+
+      - name: Configurar Java 17 (Temurin)
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Gate 1 - Verificación Estática (Checkstyle)
+        run: mvn -B checkstyle:check
+
+      - name: Gate 2 - Pruebas Automatizadas (JUnit 5)
+        run: mvn -B test
+
+      - name: Gate 3 - Cobertura mínima (JaCoCo >= 45% instrucciones, >= 20% ramas)
+        run: mvn -B jacoco:check
+
+      - name: Publicar reporte de cobertura
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/
+          if-no-files-found: ignore

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FAF5EC">
+  <title>AgroValle Connect | Acceso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <header class="access-header">
+    <a class="access-brand" href="/clientes/index.html">
+      <span class="brand-mark">A<span>V</span></span>
+      <span><strong>AgroValle</strong><small>CONNECT</small></span>
+    </a>
+    <a class="back-link" href="/clientes/index.html"><i data-lucide="arrow-left"></i> Volver a la tienda</a>
+  </header>
+
+  <main class="access-layout">
+    <section class="access-story">
+      <div class="story-content">
+          <span class="story-kicker"><i data-lucide="users"></i> UNA COMUNIDAD QUE CRECE</span>
+          <h1>El campo nos<br>conecta<span>.</span></h1>
+          <p>Entra a tu espacio AgroValle y sigue de cerca los productos, pedidos y cosechas de nuestra comunidad.</p>
+      </div>
+
+      <!-- Reemplazo del arte de emojis por un diseño abstracto/vectorial moderno -->
+      <div class="story-art" aria-hidden="true">
+        <div class="abstract-circle circle-1"></div>
+        <div class="abstract-circle circle-2"></div>
+        <div class="art-glass-card">
+            <i data-lucide="sprout" class="art-icon"></i>
+        </div>
+      </div>
+
+      <div class="story-caption"><i data-lucide="check-circle-2"></i> Productos locales, relaciones reales.</div>
+    </section>
+
+    <section class="access-panel">
+      <div class="form-container">
+          <div class="form-heading">
+            <span class="section-kicker">TU ESPACIO AGROVALLE</span>
+            <h2>Qué bueno tenerte aquí.</h2>
+            <p>Inicia sesión para seguir conectado con los productos del campo.</p>
+          </div>
+          <div class="access-message" id="access-message" role="status" aria-live="polite"></div>
+
+          <form class="access-form" id="login-form">
+            <div class="input-group">
+                <label for="login-user">Correo electrónico o nombre de usuario</label>
+                <div class="input-wrapper">
+                    <i data-lucide="mail"></i>
+                    <input id="login-user" name="usuario" type="text" autocomplete="username" placeholder="ejemplo@correo.com" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="login-password">Contraseña</label>
+                <div class="input-wrapper">
+                    <i data-lucide="lock"></i>
+                    <input id="login-password" name="contrasena" type="password" autocomplete="current-password" placeholder="••••••••" required>
+                </div>
+            </div>
+
+            <button class="submit-button" type="submit">
+                <i data-lucide="log-in"></i>
+                <span>Iniciar sesión</span>
+                <i data-lucide="arrow-right" class="arrow"></i>
+            </button>
+          </form>
+
+          <div class="form-footer">
+              <div class="register-invite">¿Aún no tienes cuenta? <a href="/registro/index.html">Crear cuenta gratis</a></div>
+              <div class="access-divider"><span>O CONTINÚA EXPLORANDO</span></div>
+              <a class="back-to-shop" href="/clientes/index.html"><i data-lucide="store"></i> Volver a la tienda</a>
+          </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="index.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
