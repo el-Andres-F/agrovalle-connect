@@ -28,7 +28,9 @@ import jakarta.servlet.http.HttpSession;
 public class ProductoController {
 
     private final ProductoRepository productoRepository;
+
     private final ProductorRepository productorRepository;
+
     private final AutorizacionService autorizacionService;
 
     public ProductoController(ProductoRepository productoRepository,

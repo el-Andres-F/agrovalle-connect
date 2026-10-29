@@ -1,6 +1,5 @@
 package com.agrovalle.connect.controlador;
 
-import com.agrovalle.connect.modelo.Pedido;
 import com.agrovalle.connect.repositorio.PedidoRepository;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
@@ -22,7 +21,9 @@ public class PedidoController {
     @GetMapping("/mios")
     public List<PedidoResponse> misPedidos(HttpSession session) {
         if (session == null || !"COMPRADOR".equals(session.getAttribute("tipoUsuario"))) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Inicia sesión como comprador para consultar tus pedidos.");
+            throw new ResponseStatusException(
+                    HttpStatus.UNAUTHORIZED,
+                    "Inicia sesión como comprador para consultar tus pedidos.");
         }
         Long compradorId = (Long) session.getAttribute("usuarioId");
         return pedidoRepository.findByCompradorIdOrderByFechaCreacionDesc(compradorId).stream()

@@ -31,12 +31,17 @@ import org.springframework.web.server.ResponseStatusException;
 public class AuthController {
 
     private static final Pattern CORREO = Pattern.compile("^[\\w.+-]+@[\\w-]+(\\.[\\w-]+)+$");
+
     private static final Pattern CONTRASENA = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d).{8,}$");
+
     private static final Pattern TELEFONO = Pattern.compile("^3\\d{9}$");
 
     private final RegistroService registroService;
+
     private final AdministradorRepository administradorRepository;
+
     private final CompradorRepository compradorRepository;
+
     private final BCryptPasswordEncoder codificador = new BCryptPasswordEncoder();
 
     public AuthController(RegistroService registroService,
@@ -193,7 +198,8 @@ public class AuthController {
         if (nueva != null && !nueva.isBlank()
                 && (actual == null || actual.isBlank() || !CONTRASENA.matcher(nueva).matches())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                    "Para cambiar la contraseña, indica la actual y usa una nueva de 8 caracteres con letras y números.");
+                    "Para cambiar la contraseña, indica la actual y usa una nueva de 8 caracteres con letras "
+                            + "y números.");
         }
     }
 

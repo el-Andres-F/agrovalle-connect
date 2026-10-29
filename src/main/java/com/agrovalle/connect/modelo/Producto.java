@@ -22,10 +22,15 @@ public class Producto {
     private Long id;
 
     private String nombre;
+
     private String categoria;
+
     private Integer cantidad;
+
     private LocalDate fechaCosecha;
+
     private Double precio;
+
     private String ubicacion;
 
     @ManyToOne

@@ -28,11 +28,17 @@ import org.springframework.web.server.ResponseStatusException;
 public class PagoPseController {
 
     private final ProductoRepository productoRepository;
+
     private final CompradorRepository compradorRepository;
+
     private final PedidoRepository pedidoRepository;
+
     private final String publicKey;
+
     private final String integritySecret;
+
     private final String redirectUrl;
+
     private final String checkoutBaseUrl;
 
     public PagoPseController(

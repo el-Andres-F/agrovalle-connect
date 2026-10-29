@@ -51,11 +51,31 @@ public class Pedido {
         this.detalle = detalle;
     }
 
-    public Long getId() { return id; }
-    public String getReferencia() { return referencia; }
-    public Comprador getComprador() { return comprador; }
-    public BigDecimal getTotal() { return total; }
-    public String getEstado() { return estado; }
-    public LocalDateTime getFechaCreacion() { return fechaCreacion; }
-    public String getDetalle() { return detalle; }
+    public Long getId() {
+        return id;
+    }
+
+    public String getReferencia() {
+        return referencia;
+    }
+
+    public Comprador getComprador() {
+        return comprador;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public LocalDateTime getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public String getDetalle() {
+        return detalle;
+    }
 }

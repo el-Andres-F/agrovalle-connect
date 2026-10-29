@@ -24,10 +24,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminResumenController {
 
     private static final Set<String> CERRADOS = Set.of("ENTREGADO", "CANCELADO");
+
     private static final Set<String> SIN_PAGO = Set.of("PAGO_INICIADO", "PAGO_PENDIENTE");
+
     private static final String SEPARADOR_ENTREGA = " | ";
 
     private final PedidoRepository pedidoRepository;
+
     private final AutorizacionService autorizacionService;
 
     public AdminResumenController(PedidoRepository pedidoRepository, AutorizacionService autorizacionService) {

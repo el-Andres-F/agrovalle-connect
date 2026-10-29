@@ -13,11 +13,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class InicializadorAdministrador implements ApplicationRunner {
 
     private final AdministradorRepository administradorRepository;
+
     private final String usuario;
+
     private final String contrasena;
+
     private final String nombre;
+
     private final String apellido;
+
     private final String correo;
+
     private final BCryptPasswordEncoder codificador = new BCryptPasswordEncoder();
 
     public InicializadorAdministrador(

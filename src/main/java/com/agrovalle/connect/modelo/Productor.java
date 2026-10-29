@@ -19,8 +19,11 @@ public class Productor {
     private Long id;
 
     private String nombre;
+
     private String ubicacion;
+
     private String cedula;
+
     private String contacto;
 
     public Productor() {

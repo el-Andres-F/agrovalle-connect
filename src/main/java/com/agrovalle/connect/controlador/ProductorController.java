@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductorController {
 
     private final ProductorRepository productorRepository;
+
     private final AutorizacionService autorizacionService;
 
     public ProductorController(ProductorRepository productorRepository, AutorizacionService autorizacionService) {

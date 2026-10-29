@@ -21,6 +21,7 @@ import org.springframework.stereotype.Component;
 public class InicializadorIconos implements ApplicationRunner {
 
     private static final int SIZE = 128;
+
     private static final Color INK = new Color(59, 51, 40);
 
     @Override

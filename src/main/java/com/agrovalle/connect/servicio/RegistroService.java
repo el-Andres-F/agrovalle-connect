@@ -19,12 +19,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class RegistroService {
 
     private static final Pattern CEDULA = Pattern.compile("^\\d{6,10}$");
+
     private static final Pattern CORREO = Pattern.compile("^[\\w.+-]+@[\\w-]+(\\.[\\w-]+)+$");
+
     private static final Pattern TELEFONO = Pattern.compile("^3\\d{9}$");
+
     private static final Pattern CONTRASENA = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d).{8,}$");
 
     private final ProductorRepository productorRepository;
+
     private final CompradorRepository compradorRepository;
+
     private final BCryptPasswordEncoder codificador = new BCryptPasswordEncoder();
 
     public RegistroService(ProductorRepository productorRepository,
