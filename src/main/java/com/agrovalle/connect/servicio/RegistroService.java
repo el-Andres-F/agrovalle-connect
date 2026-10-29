@@ -38,9 +38,12 @@ public class RegistroService {
         if (datos == null || datos.tipo() == null) {
             throw new RegistroInvalidoException("El campo 'tipo' es obligatorio (PRODUCTOR o COMPRADOR).");
         }
-        return datos.tipo() == TipoUsuario.PRODUCTOR
-                ? registrarProductor(datos)
-                : registrarComprador(datos);
+        return switch (datos.tipo()) {
+            case PRODUCTOR -> registrarProductor(datos);
+            case COMPRADOR -> registrarComprador(datos);
+            case ADMIN -> throw new RegistroInvalidoException(
+                "Las cuentas administrativas se configuran únicamente desde el servidor.");
+        };
     }
 
     private RegistroResponse registrarProductor(RegistroRequest d) {
@@ -79,6 +82,9 @@ public class RegistroService {
         }
         Comprador comprador = new Comprador();
         comprador.setNombre(d.nombre().trim());
+        if (d.apellido() != null && !d.apellido().isBlank()) {
+        comprador.setApellido(d.apellido().trim());
+        }
         comprador.setCorreo(correo);
         comprador.setTelefono(d.telefono());
         comprador.setContrasenaHash(codificador.encode(d.contrasena()));

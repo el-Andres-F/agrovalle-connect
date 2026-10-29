@@ -18,8 +18,10 @@ import com.agrovalle.connect.modelo.Producto;
 import com.agrovalle.connect.modelo.Productor;
 import com.agrovalle.connect.repositorio.ProductoRepository;
 import com.agrovalle.connect.repositorio.ProductorRepository;
+import com.agrovalle.connect.servicio.AutorizacionService;
 
 import jakarta.validation.Valid;
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -27,14 +29,20 @@ public class ProductoController {
 
     private final ProductoRepository productoRepository;
     private final ProductorRepository productorRepository;
+    private final AutorizacionService autorizacionService;
 
-    public ProductoController(ProductoRepository productoRepository, ProductorRepository productorRepository) {
+    public ProductoController(ProductoRepository productoRepository,
+            ProductorRepository productorRepository,
+            AutorizacionService autorizacionService) {
         this.productoRepository = productoRepository;
         this.productorRepository = productorRepository;
+        this.autorizacionService = autorizacionService;
     }
 
     @PostMapping("/productos")
-    public ResponseEntity<Producto> crearProducto(@Valid @RequestBody SolicitudProducto solicitud) {
+    public ResponseEntity<Producto> crearProducto(@Valid @RequestBody SolicitudProducto solicitud,
+            HttpSession session) {
+        autorizacionService.exigirAdministrador(session);
         Productor productor = productorRepository.findById(solicitud.productorId())
             .orElseThrow(() -> new IllegalArgumentException("Productor no encontrado"));
 
@@ -46,6 +54,9 @@ public class ProductoController {
             solicitud.precio(),
             productor
         );
+        String ubicacion = solicitud.ubicacion();
+        producto.setUbicacion(ubicacion == null || ubicacion.isBlank()
+            ? productor.getUbicacion() : ubicacion.trim());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(productoRepository.save(producto));
     }
@@ -70,7 +81,8 @@ public class ProductoController {
         Integer cantidad,
         LocalDate fechaCosecha,
         Double precio,
-        Long productorId
+        Long productorId,
+        String ubicacion
     ) {
     }
 }

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FAF5EC">
+  <title>AgroValle Connect | Mis pedidos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/shared/tienda.css">
+  <link rel="stylesheet" href="/pedidos/index.css">
+  <script type="module" src="/pedidos/index.js"></script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="page">
+    <p class="kicker">MI CUENTA</p>
+    <h1 class="page-title">Mis pedidos</h1>
+
+    <div class="empty card" id="orders-gate" hidden>
+      <span class="big" aria-hidden="true">🔒</span><strong id="gate-title">Inicia sesión para ver tus pedidos</strong>
+      <span id="gate-text">Aquí verás el seguimiento y el historial de tus compras.</span>
+      <a class="btn-dark" id="gate-link" href="/acceso/index.html?next=%2Fpedidos%2F">Iniciar sesión</a>
+    </div>
+
+    <div id="orders-content" hidden>
+      <div class="orders-top">
+        <section class="card panel" id="tracking-card" aria-labelledby="tracking-title">
+          <div class="card-head">
+            <div><h2 id="tracking-title">Seguimiento del pedido</h2><p class="card-sub" id="tracking-sub"></p></div>
+            <span class="badge" id="tracking-badge"></span>
+          </div>
+          <ol class="steps" id="steps"></ol>
+          <div class="route" aria-hidden="true">
+            <svg viewBox="0 0 600 90" preserveAspectRatio="none"><path d="M24 62 C 120 48, 170 30, 250 32 S 380 56, 470 46 S 560 28, 578 26" fill="none" stroke="#3B3328" stroke-width="2.5" stroke-dasharray="7 6" stroke-linecap="round"/></svg>
+            <span class="route-home">🏡</span><span class="route-truck" id="route-truck">🚚</span><span class="route-pin">📍</span>
+          </div>
+          <div class="order-items"><div id="order-items"></div><strong id="order-total"></strong></div>
+          <p class="delivery-note" id="delivery-note" hidden></p>
+        </section>
+
+        <section class="card panel" aria-labelledby="producers-title">
+          <h2 id="producers-title">Tus productores</h2><p class="card-sub">A quienes has comprado</p>
+          <ul class="producer-list" id="producer-list"></ul>
+          <p class="card-sub" id="producers-empty" hidden>Aún no hay productores en tus pedidos.</p>
+          <div class="stat-tiles">
+            <div class="tile"><strong id="stat-orders">0</strong><span>Pedidos</span></div>
+            <div class="tile gold"><strong id="stat-total">$ 0</strong><span>Total comprado</span></div>
+          </div>
+        </section>
+      </div>
+
+      <section class="card panel history" aria-labelledby="history-title">
+        <div class="card-head">
+          <div><h2 id="history-title">Historial de pedidos</h2><p class="card-sub">Tus compras anteriores</p></div>
+          <button class="text-link dark" id="toggle-history" type="button" hidden>Ver todos</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Pedido</th><th>Fecha</th><th>Productores</th><th>Total</th><th>Estado</th><th><span class="sr">Acción</span></th></tr></thead>
+            <tbody id="history-body"></tbody>
+          </table>
+        </div>
+        <div class="empty" id="history-empty" hidden>
+          <span class="big" aria-hidden="true">🧺</span><strong>Todavía no tienes pedidos</strong>
+          <span>Cuando confirmes una compra, aparecerá aquí.</span>
+          <a class="btn-dark" href="/clientes/#catalogo">Explorar catálogo</a>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

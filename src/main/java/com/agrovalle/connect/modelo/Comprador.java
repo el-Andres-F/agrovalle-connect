@@ -19,6 +19,9 @@ public class Comprador {
     @Column(nullable = false)
     private String nombre;
 
+    @Column(name = "apellido", length = 100)
+    private String apellido;
+
     @Column(nullable = false, unique = true)
     private String correo;
 
@@ -38,6 +41,14 @@ public class Comprador {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getCorreo() {

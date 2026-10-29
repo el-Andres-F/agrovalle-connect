@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FAF5EC">
+  <meta name="description" content="Revisa tu selección de productos locales y confirma tu pedido en AgroValle Connect.">
+  <title>AgroValle Connect | Carrito</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/shared/tienda.css">
+  <link rel="stylesheet" href="/carrito/index.css">
+  <script type="module" src="/carrito/index.js"></script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="page">
+    <p class="kicker">TU COMPRA</p>
+    <h1 class="page-title">Mi carrito</h1>
+    <div class="cart-layout">
+      <div class="cart-main">
+        <section class="card panel" aria-labelledby="products-heading">
+          <div class="card-head">
+            <div><h2 id="products-heading">Productos seleccionados</h2><p class="card-sub" id="item-count" aria-live="polite">0 productos</p></div>
+            <button class="text-link" id="clear-cart" type="button" hidden>Vaciar carrito</button>
+          </div>
+          <div id="cart-lines" class="cart-lines" aria-live="polite"></div>
+          <div id="cart-empty" class="empty" hidden>
+            <span class="big" aria-hidden="true">🧺</span><strong>Tu carrito está vacío</strong>
+            <span>Encuentra una cosecha que te guste y agrégala aquí.</span>
+            <a class="btn-dark" href="/clientes/#catalogo">Explorar catálogo</a>
+          </div>
+        </section>
+        <section class="card panel" id="favs-card" aria-labelledby="favs-heading" hidden>
+          <h2 id="favs-heading">Tus favoritos</h2><p class="card-sub">Guardados para comprar después</p>
+          <div class="mini-grid" id="favs-grid"></div>
+        </section>
+        <section class="card panel" id="recs-card" aria-labelledby="recs-heading" hidden>
+          <h2 id="recs-heading">Recomendados para ti</h2><p class="card-sub">Según lo que llevas en el carrito</p>
+          <div class="mini-grid" id="recs-grid"></div>
+        </section>
+      </div>
+
+      <aside class="card panel summary" aria-labelledby="summary-heading">
+        <h2 id="summary-heading">Resumen del pedido</h2><p class="card-sub">Revisa antes de pagar</p>
+        <p class="label">PRODUCTORES EN TU PEDIDO</p>
+        <div class="producer-chips" id="producer-chips"></div>
+        <p class="label">MEDIO DE PAGO</p>
+        <div class="pay-options" role="radiogroup" aria-label="Medio de pago">
+          <label class="pay-option disabled"><input type="radio" name="pay" disabled><span>Tarjeta débito/crédito</span><em>Próximamente</em><i aria-hidden="true">💳</i></label>
+          <label class="pay-option disabled"><input type="radio" name="pay" disabled><span>Nequi / Daviplata</span><em>Próximamente</em><i aria-hidden="true">📱</i></label>
+          <label class="pay-option selected"><input type="radio" name="pay" checked><span>PSE</span><i aria-hidden="true">🏦</i></label>
+          <label class="pay-option disabled"><input type="radio" name="pay" disabled><span>Efectivo contra entrega</span><em>Próximamente</em><i aria-hidden="true">💵</i></label>
+        </div>
+        <p class="label">ENTREGA</p>
+        <label class="field"><span aria-hidden="true">📍</span>
+          <input id="address" type="text" maxlength="200" placeholder="Dirección de entrega (opcional)" autocomplete="street-address" aria-label="Dirección de entrega"></label>
+        <div class="field coupon"><input type="text" placeholder="Código de descuento" disabled aria-label="Código de descuento"><button type="button" disabled title="Disponible pronto">Aplicar</button></div>
+        <div class="totals">
+          <div><span>Subtotal</span><strong id="subtotal">$ 0</strong></div>
+          <div><span>Envío</span><strong class="soft">A coordinar</strong></div>
+          <div class="grand"><span>Total a pagar</span><strong id="grand-total">$ 0</strong></div>
+        </div>
+        <button id="pay-button" class="btn-dark pay" type="button" disabled><span id="pay-label">Pagar con PSE</span> <span aria-hidden="true">→</span></button>
+        <p class="pse-note">Si PSE está disponible, continuarás al pago. Si no, guardaremos el pedido como pendiente en tu cuenta. El total se calcula con los precios actuales.</p>
+        <div id="payment-message" class="payment-message" role="status" aria-live="polite"></div>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

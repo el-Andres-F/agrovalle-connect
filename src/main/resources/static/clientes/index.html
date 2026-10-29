@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FAF5EC">
+  <meta name="description" content="Compra productos frescos directamente de productores locales en AgroValle Connect.">
+  <title>AgroValle Connect | Tienda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/shared/tienda.css">
+  <link rel="stylesheet" href="index.css">
+  <script type="module" src="index.js"></script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="page">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="hero-kicker"><span aria-hidden="true">✳</span> FRESCO, LOCAL Y CON ORIGEN</p>
+        <h1 id="hero-title">Lo mejor del campo,<br><em>directo a tu mesa.</em></h1>
+        <p class="hero-description">Descubre cosechas de temporada y compra directamente a quienes las cultivan.</p>
+        <p class="hero-origin" id="hero-origin">Directo de fincas del Valle del Cauca.</p>
+        <a class="hero-cta" href="#catalogo">Explorar productos
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14m-7-7 7 7 7-7"/></svg>
+        </a>
+      </div>
+      <div class="hero-art" role="img" aria-label="Productos frescos cultivados con cuidado">
+        <span class="hero-orb hero-orb-earth"></span><span class="hero-orb hero-orb-sun"></span>
+        <div class="hero-icons" aria-hidden="true">
+          <span class="hero-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 4c-8 0-13 3-13 9a5 5 0 0 0 5 5c6 0 8-7 8-14ZM4 21c2-5 5-8 10-11"/></svg>
+          </span>
+          <span class="hero-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 21V4m0 4c-3 0-5-2-5-4m5 8c3 0 5-2 5-4m-5 8c-3 0-5-2-5-4m5 7c3 0 5-2 5-4"/></svg>
+          </span>
+          <span class="hero-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 8c-3-4-8-2-8 3 0 5 4 9 8 10 4-1 8-5 8-10 0-5-5-7-8-3Zm0 0c0-3 2-5 5-5"/></svg>
+          </span>
+          <span class="hero-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 9h13v7a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9Zm13 2h2a2 2 0 0 1 0 4h-2M7 5V3m4 2V3m4 2V3"/></svg>
+          </span>
+        </div>
+        <span class="hero-note">
+          <svg aria-hidden="true" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7"/><path d="m7 10 2 2 4-4"/></svg>
+          Cultivado con cuidado
+        </span>
+      </div>
+    </section>
+    <div class="hero-highlights" aria-label="Beneficios de AgroValle">
+      <span>PRODUCTORES LOCALES</span><i></i>
+      <span>COSECHAS DE TEMPORADA</span><i></i>
+      <span>COMPRA CON PROPÓSITO</span>
+    </div>
+
+    <section id="catalogo" aria-labelledby="catalog-title">
+      <h2 class="section-title" id="catalog-title">Explora por categoría</h2>
+      <div class="chip-row" id="category-filters" aria-label="Filtrar por categoría"></div>
+      <div class="filter-row" id="filtros">
+        <label class="filter-chip"><svg class="inline-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg> Ubicación:
+          <select id="filter-location" aria-label="Ubicación"><option value="">Todo el Valle</option></select></label>
+        <label class="filter-chip">Precio
+          <select id="filter-price" aria-label="Precio">
+            <option value="">Todos</option><option value="low">Hasta $ 2.500</option>
+            <option value="mid">$ 2.500 a $ 5.000</option><option value="high">Más de $ 5.000</option></select></label>
+        <button class="filter-chip toggle" id="filter-stock" type="button" aria-pressed="false">Solo disponibles</button>
+        <button class="filter-chip toggle" id="filter-favs" type="button" aria-pressed="false">♥ Favoritos</button>
+        <label class="sort-box">Ordenar:
+          <select id="sort" aria-label="Ordenar productos">
+            <option value="recent">Más recientes</option><option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option><option value="name">Nombre (A–Z)</option></select></label>
+      </div>
+      <p class="result-count" id="result-count" aria-live="polite"></p>
+      <div class="catalog-grid" id="catalog-grid" aria-live="polite"></div>
+      <div class="empty card" id="catalog-empty" hidden>
+        <svg class="empty-icon" aria-hidden="true" viewBox="0 0 48 48"><path d="M8 17h32l-3 24H11L8 17Zm8 0 8-12 8 12m-12 8v8m8-8v8"/></svg>
+        <strong id="empty-title">No encontramos productos</strong>
+        <span id="empty-text">Prueba con otra búsqueda o categoría.</span>
+      </div>
+    </section>
+
+    <section class="community" id="comunidad" aria-labelledby="community-title" hidden>
+      <p class="kicker">COMUNIDAD</p>
+      <h2 class="section-title" id="community-title">Productores destacados</h2>
+      <div class="producer-grid" id="producer-grid"></div>
+    </section>
+  </main>
+</body>
+</html>

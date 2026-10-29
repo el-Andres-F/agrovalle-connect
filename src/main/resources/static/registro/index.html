@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FAF5EC">
+  <title>AgroValle Connect | Crear Cuenta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <header class="access-header">
+    <a class="access-brand" href="/clientes/index.html">
+      <span class="brand-mark">A<span>V</span></span>
+      <span><strong>AgroValle</strong><small>CONNECT</small></span>
+    </a>
+    <a class="back-link" href="/acceso/index.html"><i data-lucide="arrow-left"></i> Ya tengo cuenta</a>
+  </header>
+
+  <main class="access-layout">
+    <section class="access-story">
+      <div class="story-content">
+          <span class="story-kicker"><i data-lucide="leaf"></i> DEL CAMPO A TU MESA</span>
+          <h1>Compra fresco.<br>Apoya local<span>.</span></h1>
+          <p>Crea tu cuenta y descubre productos cultivados con dedicación por productores de nuestra región.</p>
+      </div>
+
+      <!-- Arte abstracto moderno (Sin Emojis) -->
+      <div class="story-art" aria-hidden="true">
+        <div class="abstract-circle circle-1"></div>
+        <div class="abstract-circle circle-2"></div>
+        <div class="art-glass-card">
+            <i data-lucide="wheat" class="art-icon"></i>
+        </div>
+      </div>
+
+      <div class="story-features">
+          <div class="feature-item"><i data-lucide="check"></i> Productos con origen</div>
+          <div class="feature-item"><i data-lucide="check"></i> Cosechas de temporada</div>
+          <div class="feature-item"><i data-lucide="check"></i> Una comunidad cercana</div>
+      </div>
+    </section>
+
+    <section class="access-panel">
+      <div class="form-container scrollable-form">
+          <div class="form-heading">
+            <span class="section-kicker">ÚNETE A AGROVALLE</span>
+            <h2>Crea tu cuenta.</h2>
+            <p>Solo toma un minuto. Completa tus datos para comenzar.</p>
+          </div>
+
+          <div class="access-message" id="register-message" role="status" aria-live="polite"></div>
+
+          <form class="access-form" id="register-form">
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="reg-nombre">Nombre</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="user"></i>
+                        <input id="reg-nombre" name="nombre" type="text" autocomplete="given-name" placeholder="Ej. María" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="reg-apellido">Apellido</label>
+                    <div class="input-wrapper">
+                        <input id="reg-apellido" name="apellido" type="text" autocomplete="family-name" placeholder="Pérez" required style="padding-left: 16px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="reg-correo">Correo electrónico</label>
+                <div class="input-wrapper">
+                    <i data-lucide="mail"></i>
+                    <input id="reg-correo" name="correo" type="email" autocomplete="email" placeholder="nombre@correo.com" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="reg-telefono">Celular</label>
+                <div class="input-wrapper">
+                    <i data-lucide="phone"></i>
+                    <input id="reg-telefono" name="telefono" type="tel" pattern="3[0-9]{9}" maxlength="10" placeholder="300 123 4567" required>
+                </div>
+                <span class="input-hint">Celular colombiano de 10 dígitos.</span>
+            </div>
+
+            <div class="input-group">
+                <label for="reg-password">Contraseña</label>
+                <div class="input-wrapper">
+                    <i data-lucide="lock"></i>
+                    <input id="reg-password" name="contrasena" type="password" autocomplete="new-password" minlength="8" pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" title="Mínimo 8 caracteres, con letras y números" placeholder="••••••••" required>
+                </div>
+                <span class="input-hint">Mínimo 8 caracteres, con letras y números.</span>
+            </div>
+
+            <div class="terms-checkbox">
+                <label>
+                    <input type="checkbox" required>
+                    <span>Al continuar, confirmas que tus datos son correctos y aceptas usarlos para gestionar tu cuenta.</span>
+                </label>
+            </div>
+
+            <button class="submit-button" type="submit">
+                <i data-lucide="user-plus"></i>
+                <span>Crear cuenta</span>
+                <i data-lucide="arrow-right" class="arrow"></i>
+            </button>
+          </form>
+
+          <div class="form-footer">
+              <div class="register-invite">¿Ya tienes una cuenta? <a href="/acceso/index.html">Inicia sesión</a></div>
+          </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="index.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

@@ -21,6 +21,7 @@ public class Productor {
     private String nombre;
     private String ubicacion;
     private String cedula;
+    private String contacto;
 
     public Productor() {
     }
@@ -61,5 +62,13 @@ public class Productor {
 
     public void setCedula(String cedula) {
         this.cedula = cedula;
+    }
+
+    public String getContacto() {
+        return contacto;
+    }
+
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
     }
 }
