@@ -9,6 +9,7 @@ import com.agrovalle.connect.modelo.Comprador;
 import com.agrovalle.connect.modelo.Productor;
 import com.agrovalle.connect.repositorio.CompradorRepository;
 import com.agrovalle.connect.repositorio.ProductorRepository;
+import java.util.Locale;
 import java.util.regex.Pattern;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -60,11 +61,13 @@ public class RegistroService {
         if (productorRepository.existsByCedula(d.cedula())) {
             throw new RegistroDuplicadoException("Ya existe un productor con esa cedula.");
         }
-        // Ajustar a los campos reales de la entidad Productor si difieren.
         Productor productor = new Productor();
         productor.setNombre(d.nombre().trim());
         productor.setUbicacion(d.ubicacion().trim());
         productor.setCedula(d.cedula());
+        if (d.contacto() != null && !d.contacto().isBlank()) {
+            productor.setContacto(d.contacto().trim());
+        }
         Productor guardado = productorRepository.save(productor);
         return new RegistroResponse(guardado.getId(), TipoUsuario.PRODUCTOR, guardado.getNombre());
     }
@@ -81,14 +84,14 @@ public class RegistroService {
             throw new RegistroInvalidoException(
                     "La contrasena debe tener minimo 8 caracteres, con letras y numeros.");
         }
-        String correo = d.correo().trim().toLowerCase();
+        String correo = d.correo().trim().toLowerCase(Locale.ROOT);
         if (compradorRepository.existsByCorreo(correo)) {
             throw new RegistroDuplicadoException("Ya existe una cuenta con ese correo.");
         }
         Comprador comprador = new Comprador();
         comprador.setNombre(d.nombre().trim());
         if (d.apellido() != null && !d.apellido().isBlank()) {
-        comprador.setApellido(d.apellido().trim());
+            comprador.setApellido(d.apellido().trim());
         }
         comprador.setCorreo(correo);
         comprador.setTelefono(d.telefono());

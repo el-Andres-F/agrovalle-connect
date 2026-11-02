@@ -26,16 +26,8 @@ AgroValle Connect integra productores locales, compradores y la cadena de sumini
 
 La aplicacion se ejecuta como un solo sitio Spring Boot. La tienda para compradores es la pagina de inicio; el panel de gestion comparte los mismos datos y API:
 
-- `/` o `/clientes.html`: catalogo, carrito y seguimiento local de pedidos.
-- `/clientes/`: catalogo con filtros, favoritos y busqueda.
-- `/carrito/`: detalle y total del carrito, con checkout PSE.
-- `/acceso/`: inicio de sesion para compradores y administradores.
-- `/registro/`: formulario independiente para crear una cuenta de comprador.
-- `/cuenta/`: edicion de perfil y contraseña.
-- `/pedidos/`: seguimiento e historial de pedidos del comprador (requiere sesión).
-- `/admin.html`: panel de gestión: resumen de ventas, productores (con contacto) y productos (con ubicación).
-- `/api/v1/productos` y `/api/v1/productores`: API REST consumida por ambas vistas.
 
+La conexión PostgreSQL se configura mediante `DB_URL`, `DB_USERNAME` y `DB_PASSWORD`; define la contraseña local antes de iniciar la aplicación. No se almacenan credenciales de base de datos en el repositorio.
 Ejecuta `./mvnw spring-boot:run` (en Windows, `mvnw.cmd spring-boot:run`) y abre `http://localhost:8080`. El carrito sigue almacenado en el navegador. Las páginas cliente, acceso, registro, cuenta y carrito están organizadas en sus respectivos directorios bajo `static/`.
 
 ### Acceso administrativo
@@ -94,6 +86,8 @@ flowchart LR
 - Maven
 - PostgreSQL
 - Git y GitHub
+
+La cobertura mínima de JaCoCo requerida para el segundo corte es 60 % en instrucciones y 60 % en ramas; el gate se valida con `mvn verify`.
 
 ## Seleccion de Java
 
@@ -162,6 +156,11 @@ checkstyle.xml                   Reglas de calidad de código (Google Java Style
 
 ## Documentacion
 
+- [Artefactos del segundo corte](docs/diseno/README.md)
+- [Especificación IEEE 29148 de HU-01](docs/ieee29148-req01.md)
+- [Principios SOLID y Strategy](docs/diseno/principios-solid-strategy.md)
+- [Checklist de entrega del segundo corte](docs/entrega-segundo-corte.md)
+- [Configuración pendiente de GitHub Projects y branch protection](docs/scrumban-y-branch-protection.md)
 - [Guia de ejecucion manual](docs/guia-ejecucion.md)
 - [Product Backlog](BACKLOG.md)
 - [Definition of Done](docs/dod.md)

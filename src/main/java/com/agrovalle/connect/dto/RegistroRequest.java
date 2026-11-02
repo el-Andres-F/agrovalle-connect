@@ -12,5 +12,6 @@ public record RegistroRequest(
         String correo,
         String telefono,
         String contrasena,
-        String apellido) {
+        String apellido,
+        String contacto) {
 }

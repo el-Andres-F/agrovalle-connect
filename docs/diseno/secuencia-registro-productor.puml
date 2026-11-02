@@ -1,0 +1,30 @@
+@startuml RegistroProductor
+actor Administrador
+participant "Navegador" as Browser
+participant "ProductorController" as Controller
+participant "ProductorService" as ProducerService
+participant "RegistroService" as Service
+database "ProductorRepository" as Repository
+database "PostgreSQL" as DB
+Administrador -> Browser : completa formulario productor
+Browser -> Controller : POST /api/v1/productores (JSON + sesión admin)
+Controller -> ProducerService : crear(productor)
+ProducerService -> Service : registrar(RegistroRequest)
+Service -> Repository : existsByCedula(cedula)
+Repository -> DB : SELECT por cédula
+DB --> Repository : resultado
+alt cédula existente
+  Repository --> Service : true
+  Service --> ProducerService : conflicto
+  ProducerService --> Controller : conflicto
+  Controller --> Browser : 409 Conflict
+else nueva cédula y datos válidos
+  Service -> Repository : save(productor)
+  Repository -> DB : INSERT productor
+  DB --> Repository : productor persistido
+  Repository --> Service : entidad con id
+  Service --> ProducerService : respuesta de creación
+  ProducerService --> Controller : respuesta de creación
+  Controller --> Browser : 201 Created
+end
+@enduml

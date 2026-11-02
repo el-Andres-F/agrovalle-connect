@@ -1,6 +1,7 @@
 package com.agrovalle.connect.modelo;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,10 +19,13 @@ public class Productor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String nombre;
 
+    @Column(nullable = false)
     private String ubicacion;
 
+    @Column(nullable = false, unique = true)
     private String cedula;
 
     private String contacto;

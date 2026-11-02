@@ -1,6 +1,7 @@
 package com.agrovalle.connect.controlador;
 
-import com.agrovalle.connect.repositorio.PedidoRepository;
+import com.agrovalle.connect.dto.PedidoResponse;
+import com.agrovalle.connect.servicio.PedidoService;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -12,10 +13,10 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 @RequestMapping("/api/v1/pedidos")
 public class PedidoController {
-    private final PedidoRepository pedidoRepository;
+    private final PedidoService pedidoService;
 
-    public PedidoController(PedidoRepository pedidoRepository) {
-        this.pedidoRepository = pedidoRepository;
+    public PedidoController(PedidoService pedidoService) {
+        this.pedidoService = pedidoService;
     }
 
     @GetMapping("/mios")
@@ -26,12 +27,6 @@ public class PedidoController {
                     "Inicia sesión como comprador para consultar tus pedidos.");
         }
         Long compradorId = (Long) session.getAttribute("usuarioId");
-        return pedidoRepository.findByCompradorIdOrderByFechaCreacionDesc(compradorId).stream()
-                .map(p -> new PedidoResponse(p.getReferencia(), p.getTotal(), p.getEstado(),
-                        p.getFechaCreacion().toString(), p.getDetalle()))
-                .toList();
+        return pedidoService.listarPorComprador(compradorId);
     }
-
-    public record PedidoResponse(String referencia, java.math.BigDecimal total, String estado,
-            String fechaCreacion, String detalle) { }
 }

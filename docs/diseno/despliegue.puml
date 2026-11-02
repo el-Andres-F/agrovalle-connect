@@ -1,0 +1,10 @@
+@startuml AgroValleConnectDeployment
+skinparam componentStyle rectangle
+node "Dispositivo cliente HTTP\nNavegador" as client
+node "Servidor de aplicaciones\nJava 17 LTS\nSpring Boot / Tomcat\nPuerto 8080" as app {
+  artifact "AgroValle Connect\nMVC + API REST + estáticos" as webapp
+}
+database "Servidor PostgreSQL\nPuerto 5432\nBase agrovalle" as db
+client --> app : HTTP / JSON
+app --> db : JDBC / PostgreSQL
+@enduml

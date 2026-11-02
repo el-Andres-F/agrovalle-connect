@@ -34,6 +34,9 @@ jobs:
       SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/agrovalle
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+      TEST_DB_URL: jdbc:postgresql://localhost:5432/agrovalle
+      TEST_DB_USERNAME: postgres
+      TEST_DB_PASSWORD: postgres
 
     steps:
       - name: Descargar Código
@@ -52,7 +55,7 @@ jobs:
       - name: Gate 2 - Pruebas Automatizadas (JUnit 5)
         run: mvn -B test
 
-      - name: Gate 3 - Cobertura mínima (JaCoCo >= 45% instrucciones, >= 20% ramas)
+      - name: Gate 3 - Cobertura mínima (JaCoCo >= 60% instrucciones y ramas)
         run: mvn -B jacoco:check
 
       - name: Publicar reporte de cobertura

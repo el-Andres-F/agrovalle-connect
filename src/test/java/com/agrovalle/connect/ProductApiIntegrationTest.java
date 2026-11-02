@@ -11,17 +11,24 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.annotation.Transactional;
 import com.agrovalle.connect.modelo.Comprador;
 import com.agrovalle.connect.modelo.Producto;
+import com.agrovalle.connect.modelo.Productor;
 import com.agrovalle.connect.repositorio.CompradorRepository;
 import com.agrovalle.connect.repositorio.ProductoRepository;
+import com.agrovalle.connect.repositorio.ProductorRepository;
 import java.time.LocalDate;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestPropertySource(properties = {
+    "spring.datasource.url=${TEST_DB_URL:jdbc:h2:mem:agrovalle-test;MODE=PostgreSQL;DB_CLOSE_DELAY=-1}",
+    "spring.datasource.username=${TEST_DB_USERNAME:sa}",
+    "spring.datasource.password=${TEST_DB_PASSWORD:}",
+    "spring.sql.init.mode=never",
     "agrovalle.admin.usuario=admin-test",
     "agrovalle.admin.contrasena=clave-temporal-test",
     "agrovalle.admin.nombre=Administrador",
@@ -40,6 +47,9 @@ class ProductApiIntegrationTest {
 
     @Autowired
     private ProductoRepository productoRepository;
+
+    @Autowired
+    private ProductorRepository productorRepository;
 
     @Test
     void contextLoads() {
@@ -74,6 +84,93 @@ class ProductApiIntegrationTest {
                 .andExpect(status().isForbidden());
     }
 
+            @Test
+            void compradorPuedeRegistrarseYUnCorreoNoSeDuplica() throws Exception {
+            String correo = "comprador-" + java.util.UUID.randomUUID() + "@example.com";
+            String solicitud = """
+                {"tipo":"COMPRADOR","nombre":"Comprador API","correo":"%s",
+                "telefono":"3001234567","contrasena":"segura123"}
+                """.formatted(correo);
+
+            mockMvc.perform(post("/api/v1/auth/register")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(solicitud))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.tipo").value("COMPRADOR"))
+                .andExpect(jsonPath("$.contrasena").doesNotExist());
+
+            mockMvc.perform(post("/api/v1/auth/register")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(solicitud))
+                .andExpect(status().isConflict());
+            }
+
+            @Test
+            void administradorRegistraProductorYLaCedulaNoSeDuplica() throws Exception {
+            String cedula = "9" + String.format("%09d",
+                Math.floorMod(java.util.UUID.randomUUID().getLeastSignificantBits(), 1_000_000_000L));
+            String solicitud = """
+                {"nombre":"Productor de prueba","ubicacion":"Palmira","cedula":"%s","contacto":"3001234567"}
+                """.formatted(cedula);
+            MockHttpSession sesionAdmin = new MockHttpSession();
+            sesionAdmin.setAttribute("tipoUsuario", "ADMIN");
+
+            mockMvc.perform(post("/api/v1/productores")
+                    .session(sesionAdmin)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(solicitud))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.tipo").value("PRODUCTOR"));
+            assertTrue(productorRepository.existsByCedula(cedula));
+
+            mockMvc.perform(post("/api/v1/productores")
+                    .session(sesionAdmin)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(solicitud))
+                .andExpect(status().isConflict());
+            }
+
+            @Test
+            void administradorPublicaProductoYFiltraCatalogo() throws Exception {
+            String cedula = "8" + String.format("%09d",
+                Math.floorMod(java.util.UUID.randomUUID().getLeastSignificantBits(), 1_000_000_000L));
+            Productor productor = productorRepository.save(new Productor("Productor API", "Palmira", cedula));
+            MockHttpSession sesionAdmin = new MockHttpSession();
+            sesionAdmin.setAttribute("tipoUsuario", "ADMIN");
+            String solicitud = """
+                {"nombre":"Limon","categoria":"frutas","cantidad":4,
+                "fechaCosecha":"2026-10-20","precio":2500,"productorId":%d}
+                """.formatted(productor.getId());
+
+            mockMvc.perform(post("/api/v1/productos")
+                    .session(sesionAdmin)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(solicitud))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.categoria").value("FRUTAS"));
+
+            mockMvc.perform(get("/api/v1/productos").param("categoria", "frutas"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].nombre").value("Limon"));
+            mockMvc.perform(get("/api/v1/productos"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isArray());
+            }
+
+            @Test
+            void administradorNoPuedeRegistrarCedulaInvalida() throws Exception {
+            MockHttpSession sesionAdmin = new MockHttpSession();
+            sesionAdmin.setAttribute("tipoUsuario", "ADMIN");
+
+            mockMvc.perform(post("/api/v1/productores")
+                    .session(sesionAdmin)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content("""
+                        {"nombre":"Productor de prueba","ubicacion":"Palmira","cedula":"12A"}
+                        """))
+                .andExpect(status().isBadRequest());
+            }
+
     @Test
     void paginaDeGestionRedirigeSiNoHaySesionAdmin() throws Exception {
         mockMvc.perform(get("/admin.html"))
@@ -101,6 +198,9 @@ class ProductApiIntegrationTest {
                 .andExpect(jsonPath("$.correo").value("admin-test@example.com"));
             mockMvc.perform(get("/admin.html").session(session))
                 .andExpect(status().isOk());
+            mockMvc.perform(get("/api/v1/admin/resumen").session(session))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.ventasSemana.length()").value(7));
     }
 
             @Test

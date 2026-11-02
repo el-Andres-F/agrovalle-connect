@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.dao.DataIntegrityViolationException;
 
 @RestControllerAdvice
 public class ManejadorErrores {
@@ -17,5 +18,11 @@ public class ManejadorErrores {
     @ExceptionHandler(RegistroDuplicadoException.class)
     public ResponseEntity<Map<String, String>> manejarDuplicado(RegistroDuplicadoException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("error", ex.getMessage()));
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Map<String, String>> manejarRestriccionDuplicada(DataIntegrityViolationException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Map.of("error", "El registro incumple una restricción de integridad."));
     }
 }

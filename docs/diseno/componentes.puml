@@ -1,0 +1,54 @@
+@startuml AgroValleConnectComponents
+package "Presentación / REST" {
+  [AuthController]
+  [ProductoController]
+  [ProductorController]
+  [PagoPseController]
+  [PedidoController]
+  [DTOs]
+}
+package "Servicio / Dominio" {
+  [RegistroService]
+  [AutenticacionService]
+  [AutorizacionService]
+  [AdminResumenService]
+  [PagoPseService]
+  [ProductorService]
+  [ProductoService]
+  [PedidoService]
+  interface "CheckoutStrategy" as Strategy
+}
+package "Acceso a datos" {
+  [ProductorRepository]
+  [ProductoRepository]
+  [CompradorRepository]
+  [PedidoRepository]
+}
+database "Persistencia PostgreSQL" as DB
+[AuthController] --> [DTOs]
+[AuthController] --> [RegistroService]
+[AuthController] --> [AutenticacionService]
+[ProductoController] --> [ProductoService]
+[ProductorController] --> [ProductorService]
+[PagoPseController] --> [PagoPseService]
+[PedidoController] --> [PedidoService]
+[AdminResumenController] --> [AdminResumenService]
+[PagoPseService] --> Strategy
+[PagoPseService] --> [ProductoRepository]
+[PagoPseService] --> [CompradorRepository]
+[PagoPseService] --> [PedidoRepository]
+[ProductorService] --> [RegistroService]
+[ProductorService] --> [ProductorRepository]
+[ProductoService] --> [ProductoRepository]
+[ProductoService] --> [ProductorRepository]
+[PedidoService] --> [PedidoRepository]
+[AdminResumenService] --> [PedidoRepository]
+[AutenticacionService] --> [CompradorRepository]
+[AutenticacionService] --> [AdministradorRepository]
+[RegistroService] --> [ProductorRepository]
+[RegistroService] --> [CompradorRepository]
+[ProductorRepository] --> DB
+[ProductoRepository] --> DB
+[CompradorRepository] --> DB
+[PedidoRepository] --> DB
+@enduml
