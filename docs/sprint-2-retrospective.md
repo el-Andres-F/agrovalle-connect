@@ -1,26 +1,28 @@
 # Sprint 2 Retrospective — AgroValle Connect
 
-**Fecha:** [completar] · **Participantes:** [nombres]. Esta retrospectiva debe redactarse en tercera persona y reflejar la conversación real del equipo.
+**Fecha:** [fecha de la retrospectiva] · **Participantes:** Andrés Camilo Fuelagan Cuastumal, Juan David Chicangana Rodríguez, Juan José Guerrero Ospina y Miguel Ángel Hurtado Arias [confirmar asistentes]. Redactada en tercera persona.
 
 ## Qué salió bien
 
-- [Hecho observado y evidencia asociada].
+- El equipo separó el checkout en `CheckoutStrategy`, `WompiPseCheckoutStrategy` y `PagoPseService`, lo que permitió probar cada capa de forma aislada con Mockito (53 pruebas).
+- El pipeline `ci.yml` con servicio PostgreSQL ejecutó Checkstyle, pruebas y JaCoCo y terminó en verde sobre `main`.
 
 ## Qué se debe mejorar
 
-- [Problema observado, causa y efecto].
+- Se hicieron commits directos a `main` que debieron revertirse mediante el PR #27 y reenviarse por el PR #29; la integración debe hacerse siempre por Pull Request.
+- El PR #29 se integró sin revisión de un par, por lo que la aprobación obligatoria debe activarse en Branch Protection.
+- El tablero mantuvo muchas tarjetas en Backlog y pocas en Hecho; debe actualizarse a diario y mostrar sus límites WIP.
+- Las pruebas locales usan H2 y la CI usa PostgreSQL; la cobertura solo se da por válida con el run de CI.
 
 ## Acciones acordadas
 
 | Acción | Responsable | Fecha límite | Evidencia de cierre |
 |---|---|---|---|
-| Confirmar con el Product Owner los municipios habilitados para HU-01. | [nombre] | [fecha] | Decisión aprobada y catálogo versionado. |
-| Ejecutar las pruebas y alcanzar el umbral JaCoCo 60/60. | [nombre] | [fecha] | Run verde y reporte HTML. |
-| Configurar / comprobar branch protection en `main`. | [administrador del repositorio] | [fecha] | Captura de reglas activas. |
-| Configurar tablero GitHub Projects y límites WIP visibles. | [nombre] | [fecha] | URL pública/captura del tablero. |
+| Activar Branch Protection en `main` con 1 aprobación y status check `build-and-test`. | [administrador del repositorio] | 4/11/2026 | Captura de la regla activa |
+| Declarar los límites WIP en las columnas y actualizar las tarjetas. | [integrante] | 4/11/2026 | Captura del tablero |
+| Confirmar con el Product Owner el catálogo de municipios de HU-01. | [integrante] | Sprint 3 | Decisión versionada |
 
 ## Medición de flujo
 
-- **WIP máximo:** In Progress ≤ 3; Code Review ≤ 2 (confirmar que estos límites están configurados en el tablero).
-- **Bloqueos y tiempo de espera:** [datos del tablero].
-- **Aprendizaje principal:** [consenso del equipo].
+- **WIP máximo:** En curso ≤ 3; En revisión ≤ 2.
+- **Aprendizaje principal:** integrar solo por Pull Request revisado por un par y con la CI en verde.

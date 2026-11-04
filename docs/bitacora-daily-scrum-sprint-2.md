@@ -1,22 +1,20 @@
 # Bitácora Daily Scrum — Sprint 2
 
-**Proyecto:** AgroValle Connect · **Equipo:** célula Scrum del proyecto · **Formato:** tercera persona.
+**Proyecto:** AgroValle Connect · **Equipo:** Andrés Camilo Fuelagan Cuastumal, Juan David Chicangana Rodríguez, Juan José Guerrero Ospina y Miguel Ángel Hurtado Arias · **Formato:** tercera persona.
 
-> Completar cada entrada con lo ocurrido realmente. No registrar como realizado trabajo que no tenga evidencia.
+**Meta del Sprint 2:** consolidar los artefactos de diseño, la separación por capas, el checkout extensible (Strategy) y la suite de calidad (pruebas, JaCoCo y CI) para el segundo corte.
 
-## Reunión [número] — [fecha y hora]
+## Reunión — [fecha y hora] · Medio: [presencial / enlace]
 
-- **Medio:** [presencial / enlace]
-- **Asistentes:** [nombres]
-- **Meta del Sprint 2:** consolidar los artefactos de diseño, la separación por capas, el checkout extensible y la suite de calidad requerida para el segundo corte.
+**Asistentes:** [nombres].
 
 | Integrante | Qué realizó desde la reunión anterior | Qué realizará a continuación | Impedimentos |
 |---|---|---|---|
-| [Nombre] | [Actividad verificable] | [Próximo paso] | [Impedimento o ninguno] |
-| [Nombre] | [Actividad verificable] | [Próximo paso] | [Impedimento o ninguno] |
-| [Nombre] | [Actividad verificable] | [Próximo paso] | [Impedimento o ninguno] |
-| [Nombre] | [Actividad verificable] | [Próximo paso] | [Impedimento o ninguno] |
+| Andrés Fuelagan | Refactorizó los servicios, implementó `CheckoutStrategy` y agregó pruebas unitarias (PR #29). | Activar la protección de `main`. | Ninguno |
+| Juan David Chicangana | [actividad verificable] | [próximo paso] | [impedimento o ninguno] |
+| Juan José Guerrero | [actividad verificable] | [próximo paso] | [impedimento o ninguno] |
+| Miguel Hurtado | [actividad verificable] | [próximo paso] | [impedimento o ninguno] |
 
-**WIP observado:** In Progress [n] / límite [3]; Code Review [n] / límite [2].  
-**Acuerdos:** [decisiones tomadas].  
-**Evidencia:** [URL del issue/PR/commit/tablero].
+**WIP observado:** En curso 3 / límite 3; En revisión 2 / límite 2.
+**Acuerdos:** integrar solo por Pull Request con aprobación de un par; declarar los límites WIP en las columnas.
+**Evidencia:** PR #27 (reversión de commits directos), PR #29 (refactor), run de CI en verde sobre `main`.

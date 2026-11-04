@@ -1,6 +1,6 @@
 # GrupoXX_Entrega_Segundo_Corte_AgroValle
 
-> Borrador de armado. Completar los campos y adjuntar capturas reales antes de exportar a PDF y cargar a la plataforma. No entregar este borrador con marcadores sin resolver.
+> Borrador de armado. Adjuntar las capturas reales antes de exportar a PDF.
 
 ## Portada institucional
 
@@ -13,7 +13,7 @@
 ## Enlaces públicos
 
 - Repositorio y rama `main`: https://github.com/el-Andres-F/agrovalle-connect/tree/main
-- Tablero GitHub Projects con WIP visible: [URL pendiente; el repositorio actualmente no muestra proyectos publicados].
+- Tablero GitHub Projects con WIP visible: https://github.com/users/el-Andres-F/projects/2
 
 ## Evidencias de aceptación
 
@@ -28,7 +28,7 @@
 - Arquitectura de checkout: `PagoPseController` delega en `PagoPseService`, que depende de `CheckoutStrategy`; Wompi implementa la generación de checkout.
 - Normalización: los productos de cada pedido se guardan en `pedido_detalles`, no como lista embebida en el campo del pedido.
 - Pruebas: 53 pruebas JUnit/Mockito/MockMvc locales aprobadas (H2). Añadir el run CI y reporte JaCoCo 60/60 ejecutados sobre el commit final con PostgreSQL antes de entregar.
-- Lecciones aprendidas: [completar con acuerdos reales de la retrospectiva].
+- Lecciones aprendidas: integrar solo por Pull Request revisado por un par; mantener la CI como puerta de calidad (Checkstyle, pruebas, JaCoCo); separar capas para poder probar con Mockito; actualizar el tablero y mostrar los límites WIP (ver `docs/sprint-2-retrospective.md`).
 
 ## Checklist de carga
 
