@@ -69,12 +69,11 @@ public class AutenticacionService {
     @Transactional(readOnly = true)
     public PerfilResponse obtenerPerfil(String tipo, Long id) {
         if ("ADMIN".equals(tipo)) {
-            Administrador admin = administradorRepository.findById(id)
+                Administrador admin = administradorRepository.findById(id)
                     .orElseThrow(AutenticacionService::sesionInvalida);
             return new PerfilResponse(tipo, admin.getNombre(), admin.getApellido(), admin.getCorreo(), null);
         }
-        Comprador comprador = compradorRepository.findById(id)
-            .orElseThrow(AutenticacionService::sesionInvalida);
+        Comprador comprador = compradorRepository.findById(id).orElseThrow(AutenticacionService::sesionInvalida);
         return new PerfilResponse(tipo, comprador.getNombre(), comprador.getApellido(),
                 comprador.getCorreo(), comprador.getTelefono());
     }
@@ -133,8 +132,8 @@ public class AutenticacionService {
         if (nueva != null && !nueva.isBlank()
                 && (actual == null || actual.isBlank() || !CONTRASENA.matcher(nueva).matches())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                    "Para cambiar la contraseña, indica la actual y usa una nueva de 8 caracteres con letras "
-                        + "y números.");
+                    "Para cambiar la contraseña, indica la actual y usa una nueva de 8 caracteres "
+                        + "con letras y números.");
         }
     }
 
