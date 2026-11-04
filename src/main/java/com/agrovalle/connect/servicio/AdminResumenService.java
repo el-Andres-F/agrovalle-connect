@@ -19,9 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class AdminResumenService {
 
     private static final Set<String> CERRADOS = Set.of("ENTREGADO", "CANCELADO");
-
     private static final Set<String> SIN_PAGO = Set.of("PAGO_INICIADO", "PAGO_PENDIENTE");
-
     private static final String SEPARADOR_ENTREGA = " | ";
 
     private final PedidoRepository pedidoRepository;

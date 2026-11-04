@@ -25,7 +25,6 @@ import org.springframework.web.server.ResponseStatusException;
 public class AuthController {
 
     private final RegistroService registroService;
-
     private final AutenticacionService autenticacionService;
 
     public AuthController(RegistroService registroService, AutenticacionService autenticacionService) {

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminResumenController {
 
     private final AdminResumenService adminResumenService;
-
     private final AutorizacionService autorizacionService;
 
     public AdminResumenController(AdminResumenService adminResumenService, AutorizacionService autorizacionService) {

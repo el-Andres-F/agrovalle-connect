@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductoService {
 
     private final ProductoRepository productoRepository;
-
     private final ProductorRepository productorRepository;
 
     public ProductoService(ProductoRepository productoRepository, ProductorRepository productorRepository) {
