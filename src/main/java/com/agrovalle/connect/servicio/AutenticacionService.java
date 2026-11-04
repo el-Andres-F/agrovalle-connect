@@ -21,11 +21,15 @@ import org.springframework.web.server.ResponseStatusException;
 public class AutenticacionService {
 
     private static final Pattern CORREO = Pattern.compile("^[\\w.+-]+@[\\w-]+(\\.[\\w-]+)+$");
+
     private static final Pattern CONTRASENA = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d).{8,}$");
+
     private static final Pattern TELEFONO = Pattern.compile("^3\\d{9}$");
 
     private final AdministradorRepository administradorRepository;
+
     private final CompradorRepository compradorRepository;
+
     private final BCryptPasswordEncoder codificador = new BCryptPasswordEncoder();
 
     public AutenticacionService(AdministradorRepository administradorRepository,

@@ -25,8 +25,11 @@ import org.springframework.web.server.ResponseStatusException;
 public class PagoPseService {
 
     private final ProductoRepository productoRepository;
+
     private final CompradorRepository compradorRepository;
+
     private final PedidoRepository pedidoRepository;
+
     private final CheckoutStrategy checkoutStrategy;
 
     public PagoPseService(ProductoRepository productoRepository,
