@@ -14,11 +14,8 @@ import org.springframework.stereotype.Component;
 public class WompiPseCheckoutStrategy implements CheckoutStrategy {
 
     private final String publicKey;
-
     private final String integritySecret;
-
     private final String redirectUrl;
-
     private final String checkoutBaseUrl;
 
     public WompiPseCheckoutStrategy(
