@@ -1,6 +1,6 @@
 # Wireframes y mockups de AgroValle Connect
 
-Los wireframes/mockups visuales ya existentes están en `docs/diseño/` (carpeta original con tilde):
+Los wireframes/mockups visuales están organizados en esta carpeta:
 
 - Inicio cliente: [Wireframe](../diseño/Wireframe%20Inicio%20(cliente).png) · [Mockup](../diseño/Cliente%20Inicio.png)
 - Acceso y registro: [Wireframe](../diseño/Wireframe%20Acceso%20login%20y%20registro%20(cliente).png) · [Mockup](../diseño/Cliente%20Acceso%20(login%20y%20registro).png)

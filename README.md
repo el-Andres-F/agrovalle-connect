@@ -156,9 +156,9 @@ checkstyle.xml                   Reglas de calidad de código (Google Java Style
 
 ## Documentacion
 
-- [Artefactos del segundo corte](docs/diseno/README.md)
+- [Artefactos del segundo corte](docs/diseño/README.md)
 - [Especificación IEEE 29148 de HU-01](docs/ieee29148-req01.md)
-- [Principios SOLID y Strategy](docs/diseno/principios-solid-strategy.md)
+- [Principios SOLID y Strategy](docs/diseño/principios-solid-strategy.md)
 - [Checklist de entrega del segundo corte](docs/entrega-segundo-corte.md)
 - [Configuración pendiente de GitHub Projects y branch protection](docs/scrumban-y-branch-protection.md)
 - [Guia de ejecucion manual](docs/guia-ejecucion.md)
