@@ -24,7 +24,7 @@
 
 ## Resumen de cambios Sprint 2 (máximo dos páginas)
 
-- Modelo relacional y DDL PostgreSQL: ver `docs/diseno/modelo-relacional.md` y `src/main/resources/schema.sql`.
+- Modelo relacional y DDL PostgreSQL: ver `docs/diseño/modelo-relacional.md` y `src/main/resources/schema.sql`.
 - Arquitectura de checkout: `PagoPseController` delega en `PagoPseService`, que depende de `CheckoutStrategy`; Wompi implementa la generación de checkout.
 - Normalización: los productos de cada pedido se guardan en `pedido_detalles`, no como lista embebida en el campo del pedido.
 - Pruebas: 53 pruebas JUnit/Mockito/MockMvc locales aprobadas (H2). Añadir el run CI y reporte JaCoCo 60/60 ejecutados sobre el commit final con PostgreSQL antes de entregar.
