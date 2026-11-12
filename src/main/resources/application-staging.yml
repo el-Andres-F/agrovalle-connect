@@ -1,0 +1,32 @@
+# Perfil de Staging (Spring Boot): sin valores fijos, todo llega por variables de entorno
+# configuradas en la PaaS. Se activa con SPRING_PROFILES_ACTIVE=staging.
+spring:
+  datasource:
+    url: ${DB_URL_VAR}
+    username: ${DB_USER_VAR}
+    password: ${DB_PASS_VAR}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: ${PORT:8080}
+
+security:
+  jwt:
+    # Reservado para la clave de firma de tokens. La app actual autentica con HttpSession,
+    # por lo que este valor aún no se lee en el código.
+    secret: ${JWT_SECRET_VAR}
+    expiration-ms: 86400000
+
+# En Staging no se aceptan credenciales de administrador por defecto:
+# si faltan estas variables, la aplicación no arranca.
+agrovalle:
+  admin:
+    usuario: ${AGROVALLE_ADMIN_USER}
+    contrasena: ${AGROVALLE_ADMIN_PASSWORD}
